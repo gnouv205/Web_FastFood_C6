@@ -1,0 +1,6 @@
+@Web_food_Asm_HostAddress = http://localhost:5215
+
+GET {{Web_food_Asm_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Web_food_Asm</name>
+    </assembly>
+    <members>
+        <member name="T:Web_food_Asm.Controllers.DangKy_APIController">
+            <summary>
+            API xử lý đăng ký tài khoản
+            </summary>
+        </member>
+        <member name="M:Web_food_Asm.Controllers.DangKy_APIController.Register(Web_food_Asm.Models.ViewModel.DangKy_ViewModel)">
+            <summary>
+            Đăng ký tài khoản mới
+            </summary>
+            <param name="model">Thông tin đăng ký gồm email, mật khẩu</param>
+            <returns>Kết quả đăng ký</returns>
+            <response code="200">Đăng ký thành công</response>
+            <response code="400">Dữ liệu không hợp lệ</response>
+            <response code="409">Email đã tồn tại</response>
+        </member>
+        <member name="M:Web_food_Asm.Controllers.DangKy_APIController.ForgotPassword(Web_food_Asm.Models.ViewModel.QuenMatKhau_ViewModel)">
+            <summary>
+            Gửi email quên mật khẩu
+            </summary>
+            <param name="model">Email của tài khoản cần đặt lại mật khẩu</param>
+            <returns>Kết quả xử lý</returns>
+            <response code="200">Email đặt lại mật khẩu đã được gửi</response>
+            <response code="400">Dữ liệu không hợp lệ</response>
+            <response code="404">Email không tồn tại</response>
+        </member>
+        <member name="M:Web_food_Asm.Controllers.DangKy_APIController.ResetPassword(Web_food_Asm.Models.ViewModel.DatLaiMatKhau_ViewModel)">
+            <summary>
+            API để đặt lại mật khẩu mới
+            </summary>
+            <param name="model">Thông tin đặt lại mật khẩu</param>
+            <returns>Kết quả xử lý</returns>
+            <response code="200">Đặt lại mật khẩu thành công</response>
+            <response code="400">Dữ liệu không hợp lệ</response>
+            <response code="404">Tài khoản không tồn tại</response>
+        </member>
+        <member name="M:Web_food_Asm.Controllers.DangNhap_APIController.Login(Web_food_Asm.Models.ViewModel.DangNhap_ViewModel)">
+            <summary>
+            Xử lý đăng nhập người dùng.
+            </summary>
+            <param name="model">Thông tin đăng nhập (Email, Mật khẩu).</param>
+            <returns>Trả về thông báo chào mừng tùy theo quyền (Admin hoặc Khách hàng).</returns>
+            <response code="200">Đăng nhập thành công</response>
+            <response code="400">Dữ liệu nhập vào không hợp lệ</response>
+            <response code="401">Sai tài khoản hoặc mật khẩu</response>
+        </member>
+        <member name="M:Web_food_Asm.Controllers.TaiKhoan_APIController.GetAllUsers">
+            <summary>
+            Lấy danh sách tài khoản kèm theo vai trò
+            </summary>
+        </member>
+        <member name="M:Web_food_Asm.Controllers.TaiKhoan_APIController.GetUserById(System.String)">
+            <summary>
+            Xem thông tin tài khoản theo ID
+            </summary>
+        </member>
+        <member name="M:Web_food_Asm.Controllers.TaiKhoan_APIController.DeleteUser(System.String)">
+            <summary>
+            Xóa tài khoản theo ID
+            </summary>
+        </member>
+        <member name="M:Web_food_Asm.Controllers.TaiKhoan_APIController.ChangePassword(System.String,Web_food_Asm.Models.ViewModel.DoiMatKhau_ViewModel)">
+            <summary>
+            Đổi mật khẩu tài khoản theo ID
+            </summary>
+        </member>
+        <member name="M:Web_food_Asm.Controllers.TaiKhoan_APIController.UpdateUser(System.String,Web_food_Asm.Models.ViewModel.TaiKhoan_ViewModel)">
+            <summary>
+            Cập nhật thông tin tài khoản theo ID
+            </summary>
+        </member>
+        <member name="T:Web_food_Asm.Migrations.data">
+            <inheritdoc />
+        </member>
+        <member name="M:Web_food_Asm.Migrations.data.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Web_food_Asm.Migrations.data.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Web_food_Asm.Migrations.data.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>
