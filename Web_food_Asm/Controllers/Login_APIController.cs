@@ -8,12 +8,12 @@ namespace Web_food_Asm.Controllers
 {
     [ApiController]
     [Route("api/login")]
-    public class DangNhap_APIController : ControllerBase
+    public class Login_APIController : ControllerBase
     {
         private readonly SignInManager<KhachHang> _signInManager;
         private readonly UserManager<KhachHang> _userManager;
 
-        public DangNhap_APIController(UserManager<KhachHang> userManager, SignInManager<KhachHang> signInManager)
+        public Login_APIController(UserManager<KhachHang> userManager, SignInManager<KhachHang> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -28,7 +28,7 @@ namespace Web_food_Asm.Controllers
         /// <response code="400">Dữ liệu nhập vào không hợp lệ</response>
         /// <response code="401">Sai tài khoản hoặc mật khẩu</response>
         [HttpPost]
-        public async Task<IActionResult> Login([FromBody] DangNhap_ViewModel model)
+        public async Task<IActionResult> Login([FromForm] Login_ViewModel model)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Web_food_Asm.Models.ViewModel
 {
-    public class TaiKhoan_ViewModel
+    public class Account_ViewModel
     {
         [Required(ErrorMessage = "Tên tài khoản không được để trống")]
         [StringLength(50, ErrorMessage = "Tên tài khoản tối đa 50 ký tự")]
@@ -22,7 +22,7 @@ namespace Web_food_Asm.Models.ViewModel
         [StringLength(200, ErrorMessage = "Địa chỉ tối đa 200 ký tự")]
         public string DiaChi { get; set; }
 
-        public string TinhTrang { get; set; } = "Hoạt động"; // Mặc định là Hoạt động
+        public string TinhTrang { get; set; } = "Hoạt Động";  // Mặc định là Hoạt động
 
         [FromForm] // Nhận file từ FormData
         public IFormFile? HinhFile { get; set; }

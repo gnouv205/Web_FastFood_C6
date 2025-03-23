@@ -13,13 +13,13 @@ namespace Web_food_Asm.Controllers
     /// API xử lý đăng ký tài khoản
     /// </summary>
     [ApiController]
-    [Route("api/dangky")]
-    public class DangKy_APIController : ControllerBase
+    [Route("api/register")]
+    public class Register_APIController : ControllerBase
     {
         private readonly UserManager<KhachHang> _userManager;
         private readonly SendMail _sendMail;
 
-        public DangKy_APIController(UserManager<KhachHang> userManager, SendMail sendMail)
+        public Register_APIController(UserManager<KhachHang> userManager, SendMail sendMail)
         {
             _userManager = userManager;
             _sendMail = sendMail;
@@ -35,7 +35,7 @@ namespace Web_food_Asm.Controllers
         /// <response code="400">Dữ liệu không hợp lệ</response>
         /// <response code="409">Email đã tồn tại</response>
         [HttpPost]
-        public async Task<IActionResult> Register([FromBody] DangKy_ViewModel model)
+        public async Task<IActionResult> Register([FromForm] Register_ViewModel model)
         {
             if (!ModelState.IsValid)
                 return BadRequest(new { Error = "Dữ liệu không hợp lệ" });
@@ -46,9 +46,13 @@ namespace Web_food_Asm.Controllers
 
             var user = new KhachHang
             {
-                UserName = model.Email,
-                Email = model.Email
+                UserName = model.UserName,  
+                Email = model.Email,
+                PasswordHash = model.Password,
+                PhoneNumber = model.PhoneNumber,
+                DiaChi = model.DiaChi,
             };
+
 
             var result = await _userManager.CreateAsync(user, model.Password);
             if (!result.Succeeded)
@@ -81,8 +85,8 @@ namespace Web_food_Asm.Controllers
         /// <response code="200">Email đặt lại mật khẩu đã được gửi</response>
         /// <response code="400">Dữ liệu không hợp lệ</response>
         /// <response code="404">Email không tồn tại</response>
-        [HttpPost("QuenMatKhau")]
-        public async Task<IActionResult> ForgotPassword([FromBody] QuenMatKhau_ViewModel model)
+        [HttpPost("quen-mat-khau")]
+        public async Task<IActionResult> ForgotPassword([FromForm] ForgotPassword_ViewModel model)
         {
             if (!ModelState.IsValid)
                 return BadRequest(new { Error = "Dữ liệu không hợp lệ" });
@@ -118,8 +122,8 @@ namespace Web_food_Asm.Controllers
         /// <response code="200">Đặt lại mật khẩu thành công</response>
         /// <response code="400">Dữ liệu không hợp lệ</response>
         /// <response code="404">Tài khoản không tồn tại</response>
-        [HttpPost("DatLaiMatKhau")]
-        public async Task<IActionResult> ResetPassword([FromBody] DatLaiMatKhau_ViewModel model)
+        [HttpPost("dat-lai-mat-khau")]
+        public async Task<IActionResult> ResetPassword([FromForm] ResetPassword_ViewModel model)
         {
             if (!ModelState.IsValid)
                 return BadRequest(new { Error = "Dữ liệu không hợp lệ" });

@@ -12,7 +12,7 @@ using Web_food_Asm.Data;
 namespace Web_food_Asm.Migrations
 {
     [DbContext(typeof(ConnectStr))]
-    [Migration("20250322125648_data")]
+    [Migration("20250323091755_data")]
     partial class data
     {
         /// <inheritdoc />

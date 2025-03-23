@@ -5,44 +5,12 @@
       "PackagePath": "staticwebassets\\images\\Logo\\logo.jpg"
     },
     {
-      "Id": "E:\\Fpt_poly\\ky_6\\Block_2\\Bai_tap\\C_6\\CaoQuocThinh_ps37749_Asm\\Web_food_Asm\\Web_food_Asm\\wwwroot\\images\\UserImages\\183f8361-7015-432d-a59c-666517f98cc3.jpg",
-      "PackagePath": "staticwebassets\\images\\UserImages\\183f8361-7015-432d-a59c-666517f98cc3.jpg"
-    },
-    {
-      "Id": "E:\\Fpt_poly\\ky_6\\Block_2\\Bai_tap\\C_6\\CaoQuocThinh_ps37749_Asm\\Web_food_Asm\\Web_food_Asm\\wwwroot\\images\\UserImages\\22427b13-421b-411b-8029-b7f49ea2c5fb.jpg",
-      "PackagePath": "staticwebassets\\images\\UserImages\\22427b13-421b-411b-8029-b7f49ea2c5fb.jpg"
-    },
-    {
-      "Id": "E:\\Fpt_poly\\ky_6\\Block_2\\Bai_tap\\C_6\\CaoQuocThinh_ps37749_Asm\\Web_food_Asm\\Web_food_Asm\\wwwroot\\images\\UserImages\\4c39aaaf-b233-47c8-af58-33c6dc3adec8.jpg",
-      "PackagePath": "staticwebassets\\images\\UserImages\\4c39aaaf-b233-47c8-af58-33c6dc3adec8.jpg"
-    },
-    {
-      "Id": "E:\\Fpt_poly\\ky_6\\Block_2\\Bai_tap\\C_6\\CaoQuocThinh_ps37749_Asm\\Web_food_Asm\\Web_food_Asm\\wwwroot\\images\\UserImages\\6449ab3c-86e8-4f7d-826c-6648be81081e.jpg",
-      "PackagePath": "staticwebassets\\images\\UserImages\\6449ab3c-86e8-4f7d-826c-6648be81081e.jpg"
-    },
-    {
-      "Id": "E:\\Fpt_poly\\ky_6\\Block_2\\Bai_tap\\C_6\\CaoQuocThinh_ps37749_Asm\\Web_food_Asm\\Web_food_Asm\\wwwroot\\images\\UserImages\\7d75168c-dd8f-4ec3-8fd9-0b960a85368f.jpg",
-      "PackagePath": "staticwebassets\\images\\UserImages\\7d75168c-dd8f-4ec3-8fd9-0b960a85368f.jpg"
-    },
-    {
-      "Id": "E:\\Fpt_poly\\ky_6\\Block_2\\Bai_tap\\C_6\\CaoQuocThinh_ps37749_Asm\\Web_food_Asm\\Web_food_Asm\\wwwroot\\images\\UserImages\\9adc18bc-de0c-42c5-8e22-dafb1624922b.jpg",
-      "PackagePath": "staticwebassets\\images\\UserImages\\9adc18bc-de0c-42c5-8e22-dafb1624922b.jpg"
-    },
-    {
-      "Id": "E:\\Fpt_poly\\ky_6\\Block_2\\Bai_tap\\C_6\\CaoQuocThinh_ps37749_Asm\\Web_food_Asm\\Web_food_Asm\\wwwroot\\images\\UserImages\\ad08ca46-c0f9-4bf2-8a60-d6a64d1b60b9.jpg",
-      "PackagePath": "staticwebassets\\images\\UserImages\\ad08ca46-c0f9-4bf2-8a60-d6a64d1b60b9.jpg"
-    },
-    {
       "Id": "E:\\Fpt_poly\\ky_6\\Block_2\\Bai_tap\\C_6\\CaoQuocThinh_ps37749_Asm\\Web_food_Asm\\Web_food_Asm\\wwwroot\\images\\UserImages\\avatar.jpg",
       "PackagePath": "staticwebassets\\images\\UserImages\\avatar.jpg"
     },
     {
       "Id": "E:\\Fpt_poly\\ky_6\\Block_2\\Bai_tap\\C_6\\CaoQuocThinh_ps37749_Asm\\Web_food_Asm\\Web_food_Asm\\wwwroot\\images\\UserImages\\avatar2.jpg",
       "PackagePath": "staticwebassets\\images\\UserImages\\avatar2.jpg"
-    },
-    {
-      "Id": "E:\\Fpt_poly\\ky_6\\Block_2\\Bai_tap\\C_6\\CaoQuocThinh_ps37749_Asm\\Web_food_Asm\\Web_food_Asm\\wwwroot\\images\\UserImages\\f9390345-52a5-409a-8cb1-f5d09594c8dc.jpg",
-      "PackagePath": "staticwebassets\\images\\UserImages\\f9390345-52a5-409a-8cb1-f5d09594c8dc.jpg"
     },
     {
       "Id": "E:\\Fpt_poly\\ky_6\\Block_2\\Bai_tap\\C_6\\CaoQuocThinh_ps37749_Asm\\Web_food_Asm\\Web_food_Asm\\wwwroot\\images\\banhmikep\\banhmi1.jpg",
@@ -327,6 +295,14 @@
     {
       "Id": "E:\\Fpt_poly\\ky_6\\Block_2\\Bai_tap\\C_6\\CaoQuocThinh_ps37749_Asm\\Web_food_Asm\\Web_food_Asm\\wwwroot\\images\\trangmieng\\trangmieng9.jpg",
       "PackagePath": "staticwebassets\\images\\trangmieng\\trangmieng9.jpg"
+    },
+    {
+      "Id": "E:\\Fpt_poly\\ky_6\\Block_2\\Bai_tap\\C_6\\CaoQuocThinh_ps37749_Asm\\Web_food_Asm\\Web_food_Asm\\wwwroot\\uploads\\avatar_132194c9-8c20-4184-b184-d3d41f7cd16e.jpg",
+      "PackagePath": "staticwebassets\\uploads\\avatar_132194c9-8c20-4184-b184-d3d41f7cd16e.jpg"
+    },
+    {
+      "Id": "E:\\Fpt_poly\\ky_6\\Block_2\\Bai_tap\\C_6\\CaoQuocThinh_ps37749_Asm\\Web_food_Asm\\Web_food_Asm\\wwwroot\\uploads\\avatar_d4870fc8-bb04-4060-a346-e1e79ccaf73c.jpg",
+      "PackagePath": "staticwebassets\\uploads\\avatar_d4870fc8-bb04-4060-a346-e1e79ccaf73c.jpg"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Web_food_Asm.Microsoft.AspNetCore.StaticWebAssets.props",

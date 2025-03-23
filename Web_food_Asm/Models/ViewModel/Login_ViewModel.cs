@@ -2,7 +2,7 @@
 
 namespace Web_food_Asm.Models.ViewModel
 {
-    public class DangKy_ViewModel
+    public class Login_ViewModel
     {
         [Required]
         public string Email { get; set; }

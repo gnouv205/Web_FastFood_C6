@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Web_food_Asm.Models.ViewModel
 {
-    public class DoiMatKhau_ViewModel
+    public class ChangePassword_ViewModel
     {
         [Required(ErrorMessage = "Mật khẩu cũ không được để trống")]
         public string OldPassword { get; set; }

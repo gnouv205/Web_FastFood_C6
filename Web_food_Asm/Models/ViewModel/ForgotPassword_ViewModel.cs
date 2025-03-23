@@ -2,7 +2,7 @@
 
 namespace Web_food_Asm.Models.ViewModel
 {
-    public class QuenMatKhau_ViewModel
+    public class ForgotPassword_ViewModel
     {
         [Required]
         public string Email { get; set; } 

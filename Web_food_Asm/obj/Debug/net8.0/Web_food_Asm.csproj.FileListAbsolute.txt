@@ -181,3 +181,4 @@ E:\Fpt_poly\ky_6\Block_2\Bai_tap\C_6\CaoQuocThinh_ps37749_Asm\Web_food_Asm\Web_f
 E:\Fpt_poly\ky_6\Block_2\Bai_tap\C_6\CaoQuocThinh_ps37749_Asm\Web_food_Asm\Web_food_Asm\bin\Debug\net8.0\System.Security.Cryptography.Pkcs.dll
 E:\Fpt_poly\ky_6\Block_2\Bai_tap\C_6\CaoQuocThinh_ps37749_Asm\Web_food_Asm\Web_food_Asm\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
 E:\Fpt_poly\ky_6\Block_2\Bai_tap\C_6\CaoQuocThinh_ps37749_Asm\Web_food_Asm\Web_food_Asm\bin\Debug\net8.0\Web_food_Asm.staticwebassets.runtime.json
+E:\Fpt_poly\ky_6\Block_2\Bai_tap\C_6\CaoQuocThinh_ps37749_Asm\Web_food_Asm\Web_food_Asm\obj\Debug\net8.0\Web_food_Asm.sourcelink.json

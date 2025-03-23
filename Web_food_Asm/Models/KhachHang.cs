@@ -15,7 +15,7 @@ namespace Web_food_Asm.Models
         public string DiaChi { get; set; } = string.Empty;
 
         // Trạng thái tài khoản, mặc định là "Hoạt động"
-        public string TinhTrang { get; set; } = "Hoạt động";
+        public string TinhTrang { get; set; } = "Hoạt Động";
 
         // Các quan hệ đến các bảng khác
         public ICollection<SanPhamYeuThich> SanPhamYeuThichs { get; set; }

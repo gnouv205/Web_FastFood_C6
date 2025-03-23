@@ -4,42 +4,57 @@
         <name>Web_food_Asm</name>
     </assembly>
     <members>
-        <member name="T:Web_food_Asm.Controllers.DangKy_APIController">
+        <member name="M:Web_food_Asm.Controllers.Accounts_APIController.GetAllUsers">
             <summary>
-            API xử lý đăng ký tài khoản
+            Lấy danh sách tài khoản kèm theo vai trò
             </summary>
         </member>
-        <member name="M:Web_food_Asm.Controllers.DangKy_APIController.Register(Web_food_Asm.Models.ViewModel.DangKy_ViewModel)">
+        <member name="M:Web_food_Asm.Controllers.Accounts_APIController.GetUserById(System.String)">
             <summary>
-            Đăng ký tài khoản mới
+            Xem thông tin tài khoản theo ID
             </summary>
-            <param name="model">Thông tin đăng ký gồm email, mật khẩu</param>
-            <returns>Kết quả đăng ký</returns>
-            <response code="200">Đăng ký thành công</response>
+        </member>
+        <member name="M:Web_food_Asm.Controllers.Accounts_APIController.DeleteUser(System.String)">
+            <summary>
+            Xóa tài khoản theo ID
+            </summary>
+            <response code="200">xóa thành công</response>
             <response code="400">Dữ liệu không hợp lệ</response>
             <response code="409">Email đã tồn tại</response>
         </member>
-        <member name="M:Web_food_Asm.Controllers.DangKy_APIController.ForgotPassword(Web_food_Asm.Models.ViewModel.QuenMatKhau_ViewModel)">
+        <member name="M:Web_food_Asm.Controllers.Accounts_APIController.ChangePassword(System.String,Web_food_Asm.Models.ViewModel.ChangePassword_ViewModel)">
             <summary>
-            Gửi email quên mật khẩu
+            Đổi mật khẩu tài khoản theo ID
             </summary>
-            <param name="model">Email của tài khoản cần đặt lại mật khẩu</param>
-            <returns>Kết quả xử lý</returns>
-            <response code="200">Email đặt lại mật khẩu đã được gửi</response>
+            <response code="200">Đổi mật khẩu thành công</response>
             <response code="400">Dữ liệu không hợp lệ</response>
-            <response code="404">Email không tồn tại</response>
+            <response code="409">Email đã tồn tại</response>
         </member>
-        <member name="M:Web_food_Asm.Controllers.DangKy_APIController.ResetPassword(Web_food_Asm.Models.ViewModel.DatLaiMatKhau_ViewModel)">
+        <member name="M:Web_food_Asm.Controllers.Accounts_APIController.UpdateUser(System.String,Web_food_Asm.Models.ViewModel.Account_ViewModel)">
             <summary>
-            API để đặt lại mật khẩu mới
-            </summary>
-            <param name="model">Thông tin đặt lại mật khẩu</param>
-            <returns>Kết quả xử lý</returns>
-            <response code="200">Đặt lại mật khẩu thành công</response>
+            Cập nhật thông tin tài khoản theo ID
+            </summary>      
+            <response code="200">sửa thành công</response>
             <response code="400">Dữ liệu không hợp lệ</response>
-            <response code="404">Tài khoản không tồn tại</response>
+            <response code="409">Email đã tồn tại</response>
         </member>
-        <member name="M:Web_food_Asm.Controllers.DangNhap_APIController.Login(Web_food_Asm.Models.ViewModel.DangNhap_ViewModel)">
+        <member name="M:Web_food_Asm.Controllers.Accounts_APIController.AddUserRoles(System.String,Web_food_Asm.Models.ViewModel.Role_ViewModel)">
+            <summary>
+            Thêm vai trò cho tài khoản
+            </summary>
+            <response code="200">Thêm vai trò thành công</response>
+            <response code="400">Dữ liệu không hợp lệ hoặc vai trò không tồn tại</response>
+            <response code="404">Không tìm thấy tài khoản</response>
+        </member>
+        <member name="M:Web_food_Asm.Controllers.Accounts_APIController.RemoveUserRole(System.String,Web_food_Asm.Models.ViewModel.Role_ViewModel)">
+            <summary>
+            Xóa vai trò của tài khoản
+            </summary>
+            <response code="200">Xóa vai trò thành công</response>
+            <response code="400">Dữ liệu không hợp lệ hoặc tài khoản không thuộc vai trò này</response>
+            <response code="404">Không tìm thấy tài khoản</response>
+        </member>
+        <member name="M:Web_food_Asm.Controllers.Login_APIController.Login(Web_food_Asm.Models.ViewModel.Login_ViewModel)">
             <summary>
             Xử lý đăng nhập người dùng.
             </summary>
@@ -49,30 +64,80 @@
             <response code="400">Dữ liệu nhập vào không hợp lệ</response>
             <response code="401">Sai tài khoản hoặc mật khẩu</response>
         </member>
-        <member name="M:Web_food_Asm.Controllers.TaiKhoan_APIController.GetAllUsers">
+        <member name="T:Web_food_Asm.Controllers.Register_APIController">
             <summary>
-            Lấy danh sách tài khoản kèm theo vai trò
+            API xử lý đăng ký tài khoản
             </summary>
         </member>
-        <member name="M:Web_food_Asm.Controllers.TaiKhoan_APIController.GetUserById(System.String)">
+        <member name="M:Web_food_Asm.Controllers.Register_APIController.Register(Web_food_Asm.Models.ViewModel.Register_ViewModel)">
             <summary>
-            Xem thông tin tài khoản theo ID
+            Đăng ký tài khoản mới
             </summary>
+            <param name="model">Thông tin đăng ký gồm email, mật khẩu</param>
+            <returns>Kết quả đăng ký</returns>
+            <response code="200">Đăng ký thành công</response>
+            <response code="400">Dữ liệu không hợp lệ</response>
+            <response code="409">Email đã tồn tại</response>
         </member>
-        <member name="M:Web_food_Asm.Controllers.TaiKhoan_APIController.DeleteUser(System.String)">
+        <member name="M:Web_food_Asm.Controllers.Register_APIController.ForgotPassword(Web_food_Asm.Models.ViewModel.ForgotPassword_ViewModel)">
             <summary>
-            Xóa tài khoản theo ID
+            Gửi email quên mật khẩu
             </summary>
+            <param name="model">Email của tài khoản cần đặt lại mật khẩu</param>
+            <returns>Kết quả xử lý</returns>
+            <response code="200">Email đặt lại mật khẩu đã được gửi</response>
+            <response code="400">Dữ liệu không hợp lệ</response>
+            <response code="404">Email không tồn tại</response>
         </member>
-        <member name="M:Web_food_Asm.Controllers.TaiKhoan_APIController.ChangePassword(System.String,Web_food_Asm.Models.ViewModel.DoiMatKhau_ViewModel)">
+        <member name="M:Web_food_Asm.Controllers.Register_APIController.ResetPassword(Web_food_Asm.Models.ViewModel.ResetPassword_ViewModel)">
             <summary>
-            Đổi mật khẩu tài khoản theo ID
+            API để đặt lại mật khẩu mới
             </summary>
+            <param name="model">Thông tin đặt lại mật khẩu</param>
+            <returns>Kết quả xử lý</returns>
+            <response code="200">Đặt lại mật khẩu thành công</response>
+            <response code="400">Dữ liệu không hợp lệ</response>
+            <response code="404">Tài khoản không tồn tại</response>
         </member>
-        <member name="M:Web_food_Asm.Controllers.TaiKhoan_APIController.UpdateUser(System.String,Web_food_Asm.Models.ViewModel.TaiKhoan_ViewModel)">
+        <member name="M:Web_food_Asm.Controllers.Roles_APIController.GetAllRoles">
             <summary>
-            Cập nhật thông tin tài khoản theo ID
+            Lấy danh sách tất cả quyền
             </summary>
+            <response code="200">Trả về danh sách quyền</response>
+        </member>
+        <member name="M:Web_food_Asm.Controllers.Roles_APIController.GetRoleById(System.String)">
+            <summary>
+            Lấy quyền theo ID
+            </summary>
+            <response code="200">Trả về thông tin quyền</response>
+            <response code="400">ID không hợp lệ</response>
+            <response code="404">Không tìm thấy quyền</response>
+        </member>
+        <member name="M:Web_food_Asm.Controllers.Roles_APIController.CreateRole(System.String)">
+            <summary>
+            Thêm mới một quyền
+            </summary>
+            <response code="201">Thêm quyền thành công</response>
+            <response code="400">Tên quyền không hợp lệ</response>
+            <response code="409">Quyền đã tồn tại</response>
+        </member>
+        <member name="M:Web_food_Asm.Controllers.Roles_APIController.UpdateRole(System.String,System.String)">
+            <summary>
+            Cập nhật tên quyền theo ID
+            </summary>
+            <response code="200">Cập nhật thành công</response>
+            <response code="400">Dữ liệu không hợp lệ</response>
+            <response code="404">Không tìm thấy quyền</response>
+            <response code="409">Tên quyền mới đã tồn tại</response>
+        </member>
+        <member name="M:Web_food_Asm.Controllers.Roles_APIController.DeleteRole(System.String)">
+            <summary>
+            Xóa quyền theo ID
+            </summary>
+            <response code="200">Xóa quyền thành công</response>
+            <response code="400">ID không hợp lệ</response>
+            <response code="404">Không tìm thấy quyền</response>
+            <response code="409">Không thể xóa quyền vì có tài khoản đang sử dụng</response>
         </member>
         <member name="T:Web_food_Asm.Migrations.data">
             <inheritdoc />
