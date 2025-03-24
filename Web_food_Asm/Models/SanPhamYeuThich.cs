@@ -10,7 +10,7 @@ namespace Web_food_Asm.Models
         public int MaYeuThich { get; set; }  // Khóa chính, tự động sinh giá trị
 
         [Required(ErrorMessage = "Id khách hàng không được để trống.")]
-        public string Id { get; set; }  // Khóa ngoại của KhachHang
+        public string UserId { get; set; }  // Khóa ngoại của KhachHang
 
         [Required(ErrorMessage = "Mã sản phẩm không được để trống.")]
         public int MaSanPham { get; set; }  // Khóa ngoại của SanPham

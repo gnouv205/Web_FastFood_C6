@@ -38,6 +38,17 @@
             <response code="400">Dữ liệu không hợp lệ</response>
             <response code="409">Email đã tồn tại</response>
         </member>
+        <member name="M:Web_food_Asm.Controllers.Accounts_APIController.SearchUser(System.String)">
+            <summary>
+            Tìm kiếm tài khoản theo email hoặc số điện thoại 
+            </summary>
+        </member>
+        <member name="M:Web_food_Asm.Controllers.Accounts_APIController.GetAvailableRolesForUser(System.String)">
+            <summary>
+            Lấy danh sách tất cả quyền
+            </summary>
+            <response code="200">Trả về danh sách quyền</response>
+        </member>
         <member name="M:Web_food_Asm.Controllers.Accounts_APIController.AddUserRoles(System.String,Web_food_Asm.Models.ViewModel.Role_ViewModel)">
             <summary>
             Thêm vai trò cho tài khoản
@@ -107,9 +118,9 @@
         </member>
         <member name="M:Web_food_Asm.Controllers.Roles_APIController.GetRoleById(System.String)">
             <summary>
-            Lấy quyền theo ID
+            Lấy quyền theo ID và danh sách người dùng trong vai trò đó
             </summary>
-            <response code="200">Trả về thông tin quyền</response>
+            <response code="200">Trả về thông tin quyền và danh sách người dùng</response>
             <response code="400">ID không hợp lệ</response>
             <response code="404">Không tìm thấy quyền</response>
         </member>

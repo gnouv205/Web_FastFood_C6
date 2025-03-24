@@ -30,6 +30,7 @@ namespace Web_food_Asm.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    HoTen = table.Column<string>(type: "nvarchar(400)", maxLength: 400, nullable: false),
                     Hinh = table.Column<string>(type: "nvarchar(400)", maxLength: 400, nullable: false),
                     DiaChi = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     TinhTrang = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -178,10 +179,11 @@ namespace Web_food_Asm.Migrations
                 {
                     MaDonHang = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     NgayDat = table.Column<DateTime>(type: "datetime2", nullable: false),
                     TrangThai = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    TongTien = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    TongTien = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -278,9 +280,10 @@ namespace Web_food_Asm.Migrations
                 {
                     MaGioHang = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     MaSanPham = table.Column<int>(type: "int", nullable: false),
-                    SoLuong = table.Column<int>(type: "int", nullable: false)
+                    SoLuong = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -304,8 +307,9 @@ namespace Web_food_Asm.Migrations
                 {
                     MaYeuThich = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    MaSanPham = table.Column<int>(type: "int", nullable: false)
+                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    MaSanPham = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {

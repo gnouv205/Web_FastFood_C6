@@ -5,6 +5,9 @@ namespace Web_food_Asm.Models
 {
     public class KhachHang : IdentityUser
     {
+        [Required(ErrorMessage = "Địa chỉ không được để trống.")]
+        [StringLength(400, ErrorMessage = "Đường dẫn hình ảnh không được vượt quá 400 ký tự.")]
+        public string HoTen { get; set; }
         // Hình ảnh của khách hàng, tối đa 100 ký tự
         [StringLength(400, ErrorMessage = "Đường dẫn hình ảnh không được vượt quá 400 ký tự.")]
         public string Hinh { get; set; } = string.Empty;

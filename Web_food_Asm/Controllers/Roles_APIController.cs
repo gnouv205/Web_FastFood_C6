@@ -20,7 +20,6 @@ namespace Web_food_Asm.Controllers
             _roleManager = roleManager;
             _userManager = userManager;
         }
-
         #region Lấy danh sách quyền
         /// <summary>
         /// Lấy danh sách tất cả quyền
@@ -36,9 +35,9 @@ namespace Web_food_Asm.Controllers
 
         #region Lấy quyền theo ID
         /// <summary>
-        /// Lấy quyền theo ID
+        /// Lấy quyền theo ID và danh sách người dùng trong vai trò đó
         /// </summary>
-        /// <response code="200">Trả về thông tin quyền</response>
+        /// <response code="200">Trả về thông tin quyền và danh sách người dùng</response>
         /// <response code="400">ID không hợp lệ</response>
         /// <response code="404">Không tìm thấy quyền</response>
         [HttpGet("{id}")]
@@ -51,7 +50,22 @@ namespace Web_food_Asm.Controllers
             if (role == null)
                 return NotFound(new { Error = "Quyền không tồn tại" });
 
-            return Ok(new { role.Id, role.Name });
+            var usersInRole = await _userManager.GetUsersInRoleAsync(role.Name);
+            return Ok(new
+            {
+                role.Id,
+                role.Name,
+                TotalAccounts = usersInRole.Count, 
+                Users = usersInRole.Select(u => new
+                {
+                    u.Hinh,
+                    u.UserName,
+                    u.Email,
+                    u.PhoneNumber,
+                    u.DiaChi,
+                    u.TinhTrang
+                })
+            });
         }
         #endregion
 

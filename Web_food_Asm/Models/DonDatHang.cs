@@ -10,7 +10,7 @@ namespace Web_food_Asm.Models
         public int MaDonHang { get; set; }
 
         [Required(ErrorMessage = "Id khách hàng không được để trống")]
-        public string Id { get; set; } // Khóa ngoại của KhachHang
+        public string UserId { get; set; } // Khóa ngoại của KhachHang
 
         [Required(ErrorMessage = "Ngày đặt không được để trống")]
         public DateTime NgayDat { get; set; } = DateTime.Now;

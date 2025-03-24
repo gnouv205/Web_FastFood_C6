@@ -46,10 +46,11 @@ namespace Web_food_Asm.Controllers
 
             var userList = users.Select(user => new
             {
+                Hinh = string.IsNullOrEmpty(user.Hinh) ? "default.png" : user.Hinh,
                 user.Id,
                 user.Email,
+                user.HoTen,
                 user.UserName,
-                Hinh = string.IsNullOrEmpty(user.Hinh) ? "default.png" : user.Hinh,
                 user.PhoneNumber,
                 user.TinhTrang,
                 user.DiaChi,
@@ -80,13 +81,14 @@ namespace Web_food_Asm.Controllers
             // Lấy danh sách vai trò
             var roles = await _userManager.GetRolesAsync(user);
 
-            // Trả về thông tin người dùng (bỏ PasswordHash để bảo mật)
+            // Trả về thông tin người
             return Ok(new
             {
+                Hinh = string.IsNullOrWhiteSpace(user.Hinh) ? "default.png" : user.Hinh,
                 user.Id,
                 user.Email,
+                user.HoTen,
                 user.UserName,
-                Hinh = string.IsNullOrWhiteSpace(user.Hinh) ? "default.png" : user.Hinh,
                 user.PhoneNumber,
                 TinhTrang = user.TinhTrang == "Hoạt Động" ? "Hoạt động" : "Bị khóa",
                 user.DiaChi,
@@ -159,7 +161,7 @@ namespace Web_food_Asm.Controllers
         // Kiểm tra tài khoản có đơn hàng hay không
         private async Task<bool> HasOrders(string userId)
         {
-            return await _context.DonDatHangs.AnyAsync(d => d.Id == userId);
+            return await _context.DonDatHangs.AnyAsync(d => d.UserId == userId);
         }
 
         // Kiểm tra tài khoản có hóa đơn thanh toán liên quan hay không
@@ -167,7 +169,7 @@ namespace Web_food_Asm.Controllers
         {
             return await _context.ThanhToans
                 .AnyAsync(t => _context.DonDatHangs
-                .Any(d => d.MaDonHang == t.MaDonHang && d.Id == userId));
+                .Any(d => d.MaDonHang == t.MaDonHang && d.UserId == userId));
         }
 
         #endregion
@@ -297,6 +299,60 @@ namespace Web_food_Asm.Controllers
         }
         #endregion
 
+        #region Tìm kím tài khoản
+        /// <summary>
+        /// Tìm kiếm tài khoản theo email hoặc số điện thoại 
+        /// </summary>
+        [HttpGet("tim-kiem-tai-khoan")]
+        public async Task<IActionResult> SearchUser([FromQuery] string keyword)
+        {
+            if (string.IsNullOrWhiteSpace(keyword))
+                return BadRequest(new { Error = "Vui lòng nhập từ khóa tìm kiếm!" });
+
+            var users = await _userManager.Users
+                .Where(u => u.Email.Contains(keyword) || u.PhoneNumber.Contains(keyword))
+                .Select(user => new
+                {
+                    user.Id,
+                    user.Email,
+                    user.UserName,
+                    Hinh = string.IsNullOrEmpty(user.Hinh) ? "default.png" : user.Hinh,
+                    user.PhoneNumber,
+                    user.TinhTrang,
+                    user.DiaChi
+                })
+                .ToListAsync();
+
+            if (!users.Any())
+                return NotFound(new { Error = "Không tìm thấy tài khoản nào phù hợp!" });
+
+            return Ok(users);
+        }
+
+        #endregion
+
+        #region Danh sách vai trò người dùng chưa có
+        /// <summary>
+        /// Lấy danh sách tất cả quyền
+        /// </summary>
+        /// <response code="200">Trả về danh sách quyền</response>
+        [HttpGet("{id}/vai-tro-co-the-them")]
+        public async Task<IActionResult> GetAvailableRolesForUser(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            if (user == null)
+                return NotFound(new { Error = "Tài khoản không tồn tại" });
+
+            var userRoles = await _userManager.GetRolesAsync(user);
+            var allRoles = _roleManager.Roles.Select(r => r.Name).ToList();
+
+            // Lọc ra các vai trò mà user chưa có
+            var availableRoles = allRoles.Except(userRoles).ToList();
+
+            return Ok(availableRoles);
+        }
+        #endregion
+
         #region Thêm vai trò 
         /// <summary>
         /// Thêm vai trò cho tài khoản
@@ -319,6 +375,9 @@ namespace Web_food_Asm.Controllers
 
             foreach (var role in model.RoleNames)
             {
+                if (existingRoles.Contains(role))
+                    return BadRequest(new { Error = $"Người dùng đã có vai trò '{role}'" });
+
                 if (!await _roleManager.RoleExistsAsync(role))
                     return BadRequest(new { Error = $"Vai trò '{role}' không tồn tại" });
 

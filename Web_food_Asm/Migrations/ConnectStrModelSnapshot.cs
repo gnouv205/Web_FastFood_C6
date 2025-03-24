@@ -237,6 +237,10 @@ namespace Web_food_Asm.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("MaDonHang");
 
                     b.HasIndex("Id");
@@ -260,6 +264,10 @@ namespace Web_food_Asm.Migrations
 
                     b.Property<int>("SoLuong")
                         .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("MaGioHang");
 
@@ -295,6 +303,11 @@ namespace Web_food_Asm.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Hinh")
+                        .IsRequired()
+                        .HasMaxLength(400)
+                        .HasColumnType("nvarchar(400)");
+
+                    b.Property<string>("HoTen")
                         .IsRequired()
                         .HasMaxLength(400)
                         .HasColumnType("nvarchar(400)");
@@ -408,6 +421,10 @@ namespace Web_food_Asm.Migrations
 
                     b.Property<int>("MaSanPham")
                         .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("MaYeuThich");
 

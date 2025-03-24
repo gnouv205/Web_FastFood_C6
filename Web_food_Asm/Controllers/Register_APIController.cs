@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -40,13 +41,20 @@ namespace Web_food_Asm.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(new { Error = "Dữ liệu không hợp lệ" });
 
+            // Kiểm tra email đã tồn tại
             var existingUser = await _userManager.FindByEmailAsync(model.Email);
             if (existingUser != null)
-                return Conflict(new { Error = "Email đã tồn tại" });
+                return BadRequest(new { Error = "Email đã tồn tại" });
+
+            // Kiểm tra số điện thoại đã tồn tại
+            var existingPhone = await _userManager.Users.AnyAsync(u => u.PhoneNumber == model.PhoneNumber);
+            if (existingPhone)
+                return BadRequest(new { Error = "Số điện thoại đã tồn tại" });
 
             var user = new KhachHang
             {
-                UserName = model.UserName,  
+                HoTen = model.HoTen,
+                UserName = model.Email,
                 Email = model.Email,
                 PasswordHash = model.Password,
                 PhoneNumber = model.PhoneNumber,

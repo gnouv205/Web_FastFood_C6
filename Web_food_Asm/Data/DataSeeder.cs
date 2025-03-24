@@ -21,10 +21,10 @@ namespace Web_food_Asm.Data
             // Tạo tài khoản Admin nếu chưa có
             string adminEmail = "admin@123.com";
             string adminPassword = "Admin@123";
-
+            string hoTenAdmin = "admin";
             if (await userManager.FindByEmailAsync(adminEmail) == null)
             {
-                var admin = new KhachHang { UserName = adminEmail, Email = adminEmail };
+                var admin = new KhachHang { UserName = adminEmail, Email = adminEmail, HoTen = hoTenAdmin };
                 var result = await userManager.CreateAsync(admin, adminPassword);
                 if (result.Succeeded)
                 {
@@ -35,10 +35,10 @@ namespace Web_food_Asm.Data
             // Tạo tài khoản Customer nếu chưa có
             string customerEmail = "customer@123.com";
             string customerPassword = "Customer@123";
-
+            string hoTenCustomer = "customer";
             if (await userManager.FindByEmailAsync(customerEmail) == null)
             {
-                var customer = new KhachHang { UserName = customerEmail, Email = customerEmail };
+                var customer = new KhachHang { UserName = customerEmail, Email = customerEmail, HoTen = hoTenCustomer };
                 var result = await userManager.CreateAsync(customer, customerPassword);
                 if (result.Succeeded)
                 {
