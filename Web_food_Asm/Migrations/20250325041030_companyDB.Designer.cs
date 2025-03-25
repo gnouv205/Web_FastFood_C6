@@ -12,8 +12,8 @@ using Web_food_Asm.Data;
 namespace Web_food_Asm.Migrations
 {
     [DbContext(typeof(ConnectStr))]
-    [Migration("20250324080039_data")]
-    partial class data
+    [Migration("20250325041030_companyDB")]
+    partial class companyDB
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
