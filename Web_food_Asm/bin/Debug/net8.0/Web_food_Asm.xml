@@ -180,9 +180,29 @@
             <response code="404">Không tìm thấy quyền</response>
             <response code="409">Không thể xóa quyền vì có tài khoản đang sử dụng</response>
         </member>
+        <member name="M:Web_food_Asm.Controllers.SanPhamYeuThichController.GetFavorites">
+            <summary>
+            Lấy danh sách sản phẩm yêu thích của người dùng
+            </summary>
+        </member>
+        <member name="M:Web_food_Asm.Controllers.SanPhamYeuThichController.AddToFavorites(System.Int32)">
+            <summary>
+            Thêm sản phẩm vào danh sách yêu thích
+            </summary>
+        </member>
+        <member name="M:Web_food_Asm.Controllers.SanPhamYeuThichController.DeleteFavorite(System.Int32)">
+            <summary>
+            Xóa sản phẩm khỏi danh sách yêu thích
+            </summary>
+        </member>
         <member name="M:Web_food_Asm.Controllers.SanPhamAdminApiController.GetAllProducts(System.String,System.Nullable{System.Int32},System.Boolean,System.String)">
             <summary>
             Lấy toàn bộ danh sách sản phẩm, có thể lọc theo danh mục, từ khóa tìm kiếm và trạng thái còn hàng.
+            </summary>
+        </member>
+        <member name="M:Web_food_Asm.Controllers.SanPhamAdminApiController.CreateProduct(Web_food_Asm.Models.SanPham,Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Thêm sản phẩm mới.
             </summary>
         </member>
         <member name="M:Web_food_Asm.Controllers.SanPhamAdminApiController.GetCategoriesForDropdown">
