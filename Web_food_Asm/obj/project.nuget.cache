@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3kwWtOjWb04=",
+  "dgSpecHash": "03h76A2fiKQ=",
   "success": true,
-  "projectFilePath": "D:\\C#6 2025\\Asm_WebFood_6\\Web_food_Asm\\Web_food_Asm.csproj",
+  "projectFilePath": "D:\\C#6_2025\\Asm_WebFood_6\\Web_food_Asm\\Web_food_Asm.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ASUS\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

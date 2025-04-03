@@ -590,7 +590,7 @@
     "Parameters": [
       {
         "Name": "paymentResult",
-        "Type": "Web_food_Asm.Controllers.PaymentResult",
+        "Type": "Web_food_Asm.Models.PaymentResult",
         "IsRequired": true
       }
     ],

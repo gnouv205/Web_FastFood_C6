@@ -1,46 +1,74 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\C#6 2025\\Asm_WebFood_6\\",
+  "WorkspaceRootPath": "D:\\C#6_2025\\Asm_WebFood_6\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{40E7D4C7-E0A3-4C13-B5BD-77F50ABD3E33}|Web_food_Asm\\Web_food_Asm.csproj|d:\\c#6 2025\\asm_webfood_6\\web_food_asm\\controllers\\giohang_apicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{40E7D4C7-E0A3-4C13-B5BD-77F50ABD3E33}|Web_food_Asm\\Web_food_Asm.csproj|solutionrelative:web_food_asm\\controllers\\giohang_apicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D2B07BF3-A6C2-4501-8AC2-4D98153074F7}|UI\\UI.csproj|d:\\c#6_2025\\asm_webfood_6\\ui\\pages\\dangnhap.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D2B07BF3-A6C2-4501-8AC2-4D98153074F7}|UI\\UI.csproj|solutionrelative:ui\\pages\\dangnhap.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{40E7D4C7-E0A3-4C13-B5BD-77F50ABD3E33}|Web_food_Asm\\Web_food_Asm.csproj|d:\\c#6 2025\\asm_webfood_6\\web_food_asm\\controllers\\home_apicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{40E7D4C7-E0A3-4C13-B5BD-77F50ABD3E33}|Web_food_Asm\\Web_food_Asm.csproj|solutionrelative:web_food_asm\\controllers\\home_apicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D2B07BF3-A6C2-4501-8AC2-4D98153074F7}|UI\\UI.csproj|d:\\c#6_2025\\asm_webfood_6\\ui\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D2B07BF3-A6C2-4501-8AC2-4D98153074F7}|UI\\UI.csproj|solutionrelative:ui\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{40E7D4C7-E0A3-4C13-B5BD-77F50ABD3E33}|Web_food_Asm\\Web_food_Asm.csproj|d:\\c#6 2025\\asm_webfood_6\\web_food_asm\\controllers\\donhang_apicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{40E7D4C7-E0A3-4C13-B5BD-77F50ABD3E33}|Web_food_Asm\\Web_food_Asm.csproj|solutionrelative:web_food_asm\\controllers\\donhang_apicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D2B07BF3-A6C2-4501-8AC2-4D98153074F7}|UI\\UI.csproj|d:\\c#6_2025\\asm_webfood_6\\ui\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D2B07BF3-A6C2-4501-8AC2-4D98153074F7}|UI\\UI.csproj|solutionrelative:ui\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{40E7D4C7-E0A3-4C13-B5BD-77F50ABD3E33}|Web_food_Asm\\Web_food_Asm.csproj|d:\\c#6 2025\\asm_webfood_6\\web_food_asm\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{40E7D4C7-E0A3-4C13-B5BD-77F50ABD3E33}|Web_food_Asm\\Web_food_Asm.csproj|solutionrelative:web_food_asm\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{D2B07BF3-A6C2-4501-8AC2-4D98153074F7}|UI\\UI.csproj|d:\\c#6_2025\\asm_webfood_6\\ui\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D2B07BF3-A6C2-4501-8AC2-4D98153074F7}|UI\\UI.csproj|solutionrelative:ui\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{40E7D4C7-E0A3-4C13-B5BD-77F50ABD3E33}|Web_food_Asm\\Web_food_Asm.csproj|d:\\c#6 2025\\asm_webfood_6\\web_food_asm\\controllers\\register_apicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{D2B07BF3-A6C2-4501-8AC2-4D98153074F7}|UI\\UI.csproj|d:\\c#6_2025\\asm_webfood_6\\ui\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D2B07BF3-A6C2-4501-8AC2-4D98153074F7}|UI\\UI.csproj|solutionrelative:ui\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D2B07BF3-A6C2-4501-8AC2-4D98153074F7}|UI\\UI.csproj|d:\\c#6_2025\\asm_webfood_6\\ui\\pages\\giohang.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D2B07BF3-A6C2-4501-8AC2-4D98153074F7}|UI\\UI.csproj|solutionrelative:ui\\pages\\giohang.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{40E7D4C7-E0A3-4C13-B5BD-77F50ABD3E33}|Web_food_Asm\\Web_food_Asm.csproj|d:\\c#6_2025\\asm_webfood_6\\web_food_asm\\controllers\\register_apicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{40E7D4C7-E0A3-4C13-B5BD-77F50ABD3E33}|Web_food_Asm\\Web_food_Asm.csproj|solutionrelative:web_food_asm\\controllers\\register_apicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{40E7D4C7-E0A3-4C13-B5BD-77F50ABD3E33}|Web_food_Asm\\Web_food_Asm.csproj|d:\\c#6 2025\\asm_webfood_6\\web_food_asm\\data\\vnpayhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{40E7D4C7-E0A3-4C13-B5BD-77F50ABD3E33}|Web_food_Asm\\Web_food_Asm.csproj|d:\\c#6_2025\\asm_webfood_6\\web_food_asm\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{40E7D4C7-E0A3-4C13-B5BD-77F50ABD3E33}|Web_food_Asm\\Web_food_Asm.csproj|solutionrelative:web_food_asm\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{40E7D4C7-E0A3-4C13-B5BD-77F50ABD3E33}|Web_food_Asm\\Web_food_Asm.csproj|d:\\c#6_2025\\asm_webfood_6\\web_food_asm\\data\\vnpayhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{40E7D4C7-E0A3-4C13-B5BD-77F50ABD3E33}|Web_food_Asm\\Web_food_Asm.csproj|solutionrelative:web_food_asm\\data\\vnpayhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{40E7D4C7-E0A3-4C13-B5BD-77F50ABD3E33}|Web_food_Asm\\Web_food_Asm.csproj|d:\\c#6 2025\\asm_webfood_6\\web_food_asm\\controllers\\sanphamyeuthich_apicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{40E7D4C7-E0A3-4C13-B5BD-77F50ABD3E33}|Web_food_Asm\\Web_food_Asm.csproj|solutionrelative:web_food_asm\\controllers\\sanphamyeuthich_apicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{40E7D4C7-E0A3-4C13-B5BD-77F50ABD3E33}|Web_food_Asm\\Web_food_Asm.csproj|d:\\c#6_2025\\asm_webfood_6\\web_food_asm\\data\\vnpayreturnmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{40E7D4C7-E0A3-4C13-B5BD-77F50ABD3E33}|Web_food_Asm\\Web_food_Asm.csproj|solutionrelative:web_food_asm\\data\\vnpayreturnmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{40E7D4C7-E0A3-4C13-B5BD-77F50ABD3E33}|Web_food_Asm\\Web_food_Asm.csproj|d:\\c#6 2025\\asm_webfood_6\\web_food_asm\\controllers\\sanpham_apicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{40E7D4C7-E0A3-4C13-B5BD-77F50ABD3E33}|Web_food_Asm\\Web_food_Asm.csproj|solutionrelative:web_food_asm\\controllers\\sanpham_apicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{40E7D4C7-E0A3-4C13-B5BD-77F50ABD3E33}|Web_food_Asm\\Web_food_Asm.csproj|d:\\c#6 2025\\asm_webfood_6\\web_food_asm\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{40E7D4C7-E0A3-4C13-B5BD-77F50ABD3E33}|Web_food_Asm\\Web_food_Asm.csproj|d:\\c#6_2025\\asm_webfood_6\\web_food_asm\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{40E7D4C7-E0A3-4C13-B5BD-77F50ABD3E33}|Web_food_Asm\\Web_food_Asm.csproj|solutionrelative:web_food_asm\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{40E7D4C7-E0A3-4C13-B5BD-77F50ABD3E33}|Web_food_Asm\\Web_food_Asm.csproj|d:\\c#6 2025\\asm_webfood_6\\web_food_asm\\models\\thanhtoanvnpayrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{40E7D4C7-E0A3-4C13-B5BD-77F50ABD3E33}|Web_food_Asm\\Web_food_Asm.csproj|solutionrelative:web_food_asm\\models\\thanhtoanvnpayrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{40E7D4C7-E0A3-4C13-B5BD-77F50ABD3E33}|Web_food_Asm\\Web_food_Asm.csproj|d:\\c#6_2025\\asm_webfood_6\\web_food_asm\\web_food_asm.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{40E7D4C7-E0A3-4C13-B5BD-77F50ABD3E33}|Web_food_Asm\\Web_food_Asm.csproj|solutionrelative:web_food_asm\\web_food_asm.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{40E7D4C7-E0A3-4C13-B5BD-77F50ABD3E33}|Web_food_Asm\\Web_food_Asm.csproj|d:\\c#6_2025\\asm_webfood_6\\web_food_asm\\data\\sendmail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{40E7D4C7-E0A3-4C13-B5BD-77F50ABD3E33}|Web_food_Asm\\Web_food_Asm.csproj|solutionrelative:web_food_asm\\data\\sendmail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{40E7D4C7-E0A3-4C13-B5BD-77F50ABD3E33}|Web_food_Asm\\Web_food_Asm.csproj|d:\\c#6_2025\\asm_webfood_6\\web_food_asm\\weatherforecast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{40E7D4C7-E0A3-4C13-B5BD-77F50ABD3E33}|Web_food_Asm\\Web_food_Asm.csproj|solutionrelative:web_food_asm\\weatherforecast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{40E7D4C7-E0A3-4C13-B5BD-77F50ABD3E33}|Web_food_Asm\\Web_food_Asm.csproj|d:\\c#6_2025\\asm_webfood_6\\web_food_asm\\controllers\\roles_apicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{40E7D4C7-E0A3-4C13-B5BD-77F50ABD3E33}|Web_food_Asm\\Web_food_Asm.csproj|solutionrelative:web_food_asm\\controllers\\roles_apicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{40E7D4C7-E0A3-4C13-B5BD-77F50ABD3E33}|Web_food_Asm\\Web_food_Asm.csproj|d:\\c#6_2025\\asm_webfood_6\\web_food_asm\\controllers\\accounts_apicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{40E7D4C7-E0A3-4C13-B5BD-77F50ABD3E33}|Web_food_Asm\\Web_food_Asm.csproj|solutionrelative:web_food_asm\\controllers\\accounts_apicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{40E7D4C7-E0A3-4C13-B5BD-77F50ABD3E33}|Web_food_Asm\\Web_food_Asm.csproj|d:\\c#6_2025\\asm_webfood_6\\web_food_asm\\controllers\\login_apicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{40E7D4C7-E0A3-4C13-B5BD-77F50ABD3E33}|Web_food_Asm\\Web_food_Asm.csproj|solutionrelative:web_food_asm\\controllers\\login_apicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,136 +78,227 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "VnPayHelper.cs",
-              "DocumentMoniker": "D:\\C#6 2025\\Asm_WebFood_6\\Web_food_Asm\\Data\\VnPayHelper.cs",
-              "RelativeDocumentMoniker": "Web_food_Asm\\Data\\VnPayHelper.cs",
-              "ToolTip": "D:\\C#6 2025\\Asm_WebFood_6\\Web_food_Asm\\Data\\VnPayHelper.cs",
-              "RelativeToolTip": "Web_food_Asm\\Data\\VnPayHelper.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAAwC0AAAA/AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-28T02:37:02.927Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "GioHang_APIController.cs",
-              "DocumentMoniker": "D:\\C#6 2025\\Asm_WebFood_6\\Web_food_Asm\\Controllers\\GioHang_APIController.cs",
-              "RelativeDocumentMoniker": "Web_food_Asm\\Controllers\\GioHang_APIController.cs",
-              "ToolTip": "D:\\C#6 2025\\Asm_WebFood_6\\Web_food_Asm\\Controllers\\GioHang_APIController.cs",
-              "RelativeToolTip": "Web_food_Asm\\Controllers\\GioHang_APIController.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAUwD4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-27T15:56:20.346Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "SanPhamYeuThich_APIController.cs",
-              "DocumentMoniker": "D:\\C#6 2025\\Asm_WebFood_6\\Web_food_Asm\\Controllers\\SanPhamYeuThich_APIController.cs",
-              "RelativeDocumentMoniker": "Web_food_Asm\\Controllers\\SanPhamYeuThich_APIController.cs",
-              "ToolTip": "D:\\C#6 2025\\Asm_WebFood_6\\Web_food_Asm\\Controllers\\SanPhamYeuThich_APIController.cs",
-              "RelativeToolTip": "Web_food_Asm\\Controllers\\SanPhamYeuThich_APIController.cs",
-              "ViewState": "AgIAACwAAAAAAAAAAAAIwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-27T17:09:52.062Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "SanPham_APIController.cs",
-              "DocumentMoniker": "D:\\C#6 2025\\Asm_WebFood_6\\Web_food_Asm\\Controllers\\SanPham_APIController.cs",
-              "RelativeDocumentMoniker": "Web_food_Asm\\Controllers\\SanPham_APIController.cs",
-              "ToolTip": "D:\\C#6 2025\\Asm_WebFood_6\\Web_food_Asm\\Controllers\\SanPham_APIController.cs",
-              "RelativeToolTip": "Web_food_Asm\\Controllers\\SanPham_APIController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-27T18:47:45.624Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "DonHang_APIController.cs",
-              "DocumentMoniker": "D:\\C#6 2025\\Asm_WebFood_6\\Web_food_Asm\\Controllers\\DonHang_APIController.cs",
-              "RelativeDocumentMoniker": "Web_food_Asm\\Controllers\\DonHang_APIController.cs",
-              "ToolTip": "D:\\C#6 2025\\Asm_WebFood_6\\Web_food_Asm\\Controllers\\DonHang_APIController.cs",
-              "RelativeToolTip": "Web_food_Asm\\Controllers\\DonHang_APIController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-27T16:22:25.781Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "Register_APIController.cs",
-              "DocumentMoniker": "D:\\C#6 2025\\Asm_WebFood_6\\Web_food_Asm\\Controllers\\Register_APIController.cs",
-              "RelativeDocumentMoniker": "Web_food_Asm\\Controllers\\Register_APIController.cs",
-              "ToolTip": "D:\\C#6 2025\\Asm_WebFood_6\\Web_food_Asm\\Controllers\\Register_APIController.cs",
-              "RelativeToolTip": "Web_food_Asm\\Controllers\\Register_APIController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-27T18:51:20.787Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Home_APIController.cs",
-              "DocumentMoniker": "D:\\C#6 2025\\Asm_WebFood_6\\Web_food_Asm\\Controllers\\Home_APIController.cs",
-              "RelativeDocumentMoniker": "Web_food_Asm\\Controllers\\Home_APIController.cs",
-              "ToolTip": "D:\\C#6 2025\\Asm_WebFood_6\\Web_food_Asm\\Controllers\\Home_APIController.cs",
-              "RelativeToolTip": "Web_food_Asm\\Controllers\\Home_APIController.cs",
-              "ViewState": "AgIAAF4AAAAAAAAAAAAcwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-27T17:09:50.742Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\C#6 2025\\Asm_WebFood_6\\Web_food_Asm\\appsettings.json",
-              "RelativeDocumentMoniker": "Web_food_Asm\\appsettings.json",
-              "ToolTip": "D:\\C#6 2025\\Asm_WebFood_6\\Web_food_Asm\\appsettings.json",
-              "RelativeToolTip": "Web_food_Asm\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-03-27T16:29:54.222Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\C#6 2025\\Asm_WebFood_6\\Web_food_Asm\\Program.cs",
-              "RelativeDocumentMoniker": "Web_food_Asm\\Program.cs",
-              "ToolTip": "D:\\C#6 2025\\Asm_WebFood_6\\Web_food_Asm\\Program.cs",
-              "RelativeToolTip": "Web_food_Asm\\Program.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABkAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-27T19:00:06.196Z",
+              "Title": "MainLayout.razor",
+              "DocumentMoniker": "D:\\C#6_2025\\Asm_WebFood_6\\UI\\Layout\\MainLayout.razor",
+              "RelativeDocumentMoniker": "UI\\Layout\\MainLayout.razor",
+              "ToolTip": "D:\\C#6_2025\\Asm_WebFood_6\\UI\\Layout\\MainLayout.razor",
+              "RelativeToolTip": "UI\\Layout\\MainLayout.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-03T06:26:19.668Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
-              "Title": "ThanhToanVnPayRequest.cs",
-              "DocumentMoniker": "D:\\C#6 2025\\Asm_WebFood_6\\Web_food_Asm\\Models\\ThanhToanVnPayRequest.cs",
-              "RelativeDocumentMoniker": "Web_food_Asm\\Models\\ThanhToanVnPayRequest.cs",
-              "ToolTip": "D:\\C#6 2025\\Asm_WebFood_6\\Web_food_Asm\\Models\\ThanhToanVnPayRequest.cs",
-              "RelativeToolTip": "Web_food_Asm\\Models\\ThanhToanVnPayRequest.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Title": "VnPayReturnModel.cs",
+              "DocumentMoniker": "D:\\C#6_2025\\Asm_WebFood_6\\Web_food_Asm\\Data\\VnPayReturnModel.cs",
+              "RelativeDocumentMoniker": "Web_food_Asm\\Data\\VnPayReturnModel.cs",
+              "ToolTip": "D:\\C#6_2025\\Asm_WebFood_6\\Web_food_Asm\\Data\\VnPayReturnModel.cs",
+              "RelativeToolTip": "Web_food_Asm\\Data\\VnPayReturnModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-27T16:40:58.753Z",
+              "WhenOpened": "2025-04-03T06:18:23.039Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\C#6_2025\\Asm_WebFood_6\\Web_food_Asm\\Program.cs",
+              "RelativeDocumentMoniker": "Web_food_Asm\\Program.cs",
+              "ToolTip": "D:\\C#6_2025\\Asm_WebFood_6\\Web_food_Asm\\Program.cs",
+              "RelativeToolTip": "Web_food_Asm\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-03T06:18:12.946Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Web_food_Asm.http",
+              "DocumentMoniker": "D:\\C#6_2025\\Asm_WebFood_6\\Web_food_Asm\\Web_food_Asm.http",
+              "RelativeDocumentMoniker": "Web_food_Asm\\Web_food_Asm.http",
+              "ToolTip": "D:\\C#6_2025\\Asm_WebFood_6\\Web_food_Asm\\Web_food_Asm.http",
+              "RelativeToolTip": "Web_food_Asm\\Web_food_Asm.http",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2025-04-03T06:18:11.802Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "SendMail.cs",
+              "DocumentMoniker": "D:\\C#6_2025\\Asm_WebFood_6\\Web_food_Asm\\Data\\SendMail.cs",
+              "RelativeDocumentMoniker": "Web_food_Asm\\Data\\SendMail.cs",
+              "ToolTip": "D:\\C#6_2025\\Asm_WebFood_6\\Web_food_Asm\\Data\\SendMail.cs",
+              "RelativeToolTip": "Web_food_Asm\\Data\\SendMail.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-03T06:15:35.644Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "WeatherForecast.cs",
+              "DocumentMoniker": "D:\\C#6_2025\\Asm_WebFood_6\\Web_food_Asm\\WeatherForecast.cs",
+              "RelativeDocumentMoniker": "Web_food_Asm\\WeatherForecast.cs",
+              "ToolTip": "D:\\C#6_2025\\Asm_WebFood_6\\Web_food_Asm\\WeatherForecast.cs",
+              "RelativeToolTip": "Web_food_Asm\\WeatherForecast.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-03T06:12:15.956Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "GioHang.razor",
+              "DocumentMoniker": "D:\\C#6_2025\\Asm_WebFood_6\\UI\\Pages\\GioHang.razor",
+              "RelativeDocumentMoniker": "UI\\Pages\\GioHang.razor",
+              "ToolTip": "D:\\C#6_2025\\Asm_WebFood_6\\UI\\Pages\\GioHang.razor",
+              "RelativeToolTip": "UI\\Pages\\GioHang.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-03T07:03:28.147Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "_Imports.razor",
+              "DocumentMoniker": "D:\\C#6_2025\\Asm_WebFood_6\\UI\\_Imports.razor",
+              "RelativeDocumentMoniker": "UI\\_Imports.razor",
+              "ToolTip": "D:\\C#6_2025\\Asm_WebFood_6\\UI\\_Imports.razor",
+              "RelativeToolTip": "UI\\_Imports.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-03T06:44:45.982Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Home.razor",
+              "DocumentMoniker": "D:\\C#6_2025\\Asm_WebFood_6\\UI\\Pages\\Home.razor",
+              "RelativeDocumentMoniker": "UI\\Pages\\Home.razor",
+              "ToolTip": "D:\\C#6_2025\\Asm_WebFood_6\\UI\\Pages\\Home.razor",
+              "RelativeToolTip": "UI\\Pages\\Home.razor",
+              "ViewState": "AgIAAPQCAAAAAAAAAAAAAAkDAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-03T06:26:22.874Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DangNhap.razor",
+              "DocumentMoniker": "D:\\C#6_2025\\Asm_WebFood_6\\UI\\Pages\\DangNhap.razor",
+              "RelativeDocumentMoniker": "UI\\Pages\\DangNhap.razor",
+              "ToolTip": "D:\\C#6_2025\\Asm_WebFood_6\\UI\\Pages\\DangNhap.razor",
+              "RelativeToolTip": "UI\\Pages\\DangNhap.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAH8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-03T07:51:17.774Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "App.razor",
+              "DocumentMoniker": "D:\\C#6_2025\\Asm_WebFood_6\\UI\\App.razor",
+              "RelativeDocumentMoniker": "UI\\App.razor",
+              "ToolTip": "D:\\C#6_2025\\Asm_WebFood_6\\UI\\App.razor",
+              "RelativeToolTip": "UI\\App.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-03T07:55:19.142Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "VnPayHelper.cs",
+              "DocumentMoniker": "D:\\C#6_2025\\Asm_WebFood_6\\Web_food_Asm\\Data\\VnPayHelper.cs",
+              "RelativeDocumentMoniker": "Web_food_Asm\\Data\\VnPayHelper.cs",
+              "ToolTip": "D:\\C#6_2025\\Asm_WebFood_6\\Web_food_Asm\\Data\\VnPayHelper.cs",
+              "RelativeToolTip": "Web_food_Asm\\Data\\VnPayHelper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-03T06:18:24.462Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Register_APIController.cs",
+              "DocumentMoniker": "D:\\C#6_2025\\Asm_WebFood_6\\Web_food_Asm\\Controllers\\Register_APIController.cs",
+              "RelativeDocumentMoniker": "Web_food_Asm\\Controllers\\Register_APIController.cs",
+              "ToolTip": "D:\\C#6_2025\\Asm_WebFood_6\\Web_food_Asm\\Controllers\\Register_APIController.cs",
+              "RelativeToolTip": "Web_food_Asm\\Controllers\\Register_APIController.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAACcAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-03T06:01:39.744Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Roles_APIController.cs",
+              "DocumentMoniker": "D:\\C#6_2025\\Asm_WebFood_6\\Web_food_Asm\\Controllers\\Roles_APIController.cs",
+              "RelativeDocumentMoniker": "Web_food_Asm\\Controllers\\Roles_APIController.cs",
+              "ToolTip": "D:\\C#6_2025\\Asm_WebFood_6\\Web_food_Asm\\Controllers\\Roles_APIController.cs",
+              "RelativeToolTip": "Web_food_Asm\\Controllers\\Roles_APIController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-03T06:01:38.533Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\C#6_2025\\Asm_WebFood_6\\Web_food_Asm\\appsettings.json",
+              "RelativeDocumentMoniker": "Web_food_Asm\\appsettings.json",
+              "ToolTip": "D:\\C#6_2025\\Asm_WebFood_6\\Web_food_Asm\\appsettings.json",
+              "RelativeToolTip": "Web_food_Asm\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-03-29T12:40:53.861Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Accounts_APIController.cs",
+              "DocumentMoniker": "D:\\C#6_2025\\Asm_WebFood_6\\Web_food_Asm\\Controllers\\Accounts_APIController.cs",
+              "RelativeDocumentMoniker": "Web_food_Asm\\Controllers\\Accounts_APIController.cs",
+              "ToolTip": "D:\\C#6_2025\\Asm_WebFood_6\\Web_food_Asm\\Controllers\\Accounts_APIController.cs",
+              "RelativeToolTip": "Web_food_Asm\\Controllers\\Accounts_APIController.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-03T06:00:56.425Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Login_APIController.cs",
+              "DocumentMoniker": "D:\\C#6_2025\\Asm_WebFood_6\\Web_food_Asm\\Controllers\\Login_APIController.cs",
+              "RelativeDocumentMoniker": "Web_food_Asm\\Controllers\\Login_APIController.cs",
+              "ToolTip": "D:\\C#6_2025\\Asm_WebFood_6\\Web_food_Asm\\Controllers\\Login_APIController.cs",
+              "RelativeToolTip": "Web_food_Asm\\Controllers\\Login_APIController.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAgwDgAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-03T06:00:30.52Z",
               "EditorCaption": ""
             }
           ]

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\C#6 2025\\Asm_WebFood_6\\Web_food_Asm\\Web_food_Asm.csproj": {}
+    "D:\\C#6_2025\\Asm_WebFood_6\\Web_food_Asm\\Web_food_Asm.csproj": {}
   },
   "projects": {
-    "D:\\C#6 2025\\Asm_WebFood_6\\Web_food_Asm\\Web_food_Asm.csproj": {
+    "D:\\C#6_2025\\Asm_WebFood_6\\Web_food_Asm\\Web_food_Asm.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\C#6 2025\\Asm_WebFood_6\\Web_food_Asm\\Web_food_Asm.csproj",
+        "projectUniqueName": "D:\\C#6_2025\\Asm_WebFood_6\\Web_food_Asm\\Web_food_Asm.csproj",
         "projectName": "Web_food_Asm",
-        "projectPath": "D:\\C#6 2025\\Asm_WebFood_6\\Web_food_Asm\\Web_food_Asm.csproj",
+        "projectPath": "D:\\C#6_2025\\Asm_WebFood_6\\Web_food_Asm\\Web_food_Asm.csproj",
         "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "D:\\C#6 2025\\Asm_WebFood_6\\Web_food_Asm\\obj\\",
+        "outputPath": "D:\\C#6_2025\\Asm_WebFood_6\\Web_food_Asm\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
