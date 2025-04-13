@@ -1,0 +1,192 @@
+﻿@page "/admin/san-pham"
+@layout AdminLayout
+@inject HttpClient Http
+
+
+<style>
+    .body-create {
+        background-color: #f7f8fa; /* Màu nền nhẹ */
+        font-family: Arial, sans-serif;
+        color: #333;
+    }
+
+    h1.text-center {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #2c3e50;
+        text-transform: uppercase;
+        margin: 1.5rem;
+        letter-spacing: 2px;
+        font-family: 'Arial', sans-serif;
+        text-align: center;
+        padding: 10px 0;
+        border-bottom: 2px solid #28a745;
+    }
+
+    .btn-outline-secondary {
+        color: #6c757d;
+        border-color: #6c757d;
+        font-size: 1.1rem;
+        padding: 10px 20px;
+        margin-left: 1.5rem;
+        font-weight: bold;
+        border-radius: 5px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+        .btn-outline-secondary:hover {
+            background-color: #6c757d;
+            color: white;
+        }
+
+    .avatar-preview {
+        width: 200px;
+        height: 200px;
+        border: 4px solid #28a745;
+        border-radius: 50%;
+        overflow: hidden;
+        background-color: #f0f0f0;
+        margin: 0 auto;
+    }
+
+        .avatar-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+    .image-label {
+        display: block;
+        margin-top: 10px;
+        text-align: center;
+        font-size: 1rem;
+        color: #333;
+        font-weight: bold;
+        width: 100%;
+    }
+
+    .form-custom {
+        padding: 2rem;
+        border: 1px solid #dee2e6;
+        border-radius: 0.5rem;
+        background-color: #f8f9fa;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    .btn-outline-primary {
+        color: #007bff;
+        border-color: #007bff;
+    }
+
+        .btn-outline-primary:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+    .btn-success {
+        background-color: #28a745;
+        border: none;
+    }
+</style>
+
+<h1 class="text-center text-primary mb-4">Danh Sách Sản Phẩm</h1>
+
+<div class="text-left mb-4">
+    <a href="/admin/dashboard" class="btn btn-outline-secondary btn-lg" id="trolai">
+        <i class="fa fa-arrow-left"></i> Quay lại
+    </a>
+</div>
+
+<div class="mb-4 text-end">
+    <a class="btn btn-success rounded-pill" href="/admin/san-pham/create">
+        <i class="fas fa-plus-circle me-2"></i> Thêm Sản Phẩm Mới
+    </a>
+</div>
+
+@if (sanPhams == null)
+{
+    <p>Đang tải...</p>
+}
+else
+{
+    <table class="table table-hover table-bordered text-center align-middle">
+        <thead class="table-primary">
+            <tr>
+                <th>Mã</th>
+                <th>Tên Sản Phẩm</th>
+                <th>Hình</th>
+                <th>Mô Tả</th>
+                <th>Giá</th>
+                <th>Số Lượng</th>
+                <th>Danh Mục</th>
+                <th>Ngày Tạo</th>
+                <th>Ngày Cập Nhật</th>
+                <th>Hành Động</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (sanPhams.Any())
+            {
+                @foreach (var sp in sanPhams)
+                {
+                    <tr>
+                        <td>@sp.MaSanPham</td>
+                        <td>@sp.TenSanPham</td>
+                        <td><img src="@sp.HinhAnh" alt="@sp.TenSanPham" class="img-thumbnail" /></td>
+                        <td>@sp.MoTa</td>
+                        <td>@sp.Gia.ToString("C")</td>
+                        <td>@sp.SoLuong</td>
+                        <td>@sp.TenDanhMuc</td>
+                        <td>@sp.NgayTao.ToString("dd/MM/yyyy")</td>
+                        <td>@sp.NgayCapNhat.ToString("dd/MM/yyyy")</td>
+                        <td>
+                            <a class="btn btn-warning btn-sm rounded-pill me-1" href="/admin/san-pham/edit/@sp.MaSanPham">
+                                <i class="fas fa-edit"></i> Sửa
+                            </a>
+                            <a class="btn btn-danger btn-sm rounded-pill" href="/admin/san-pham/delete/@sp.MaSanPham">
+                                <i class="fas fa-trash-alt"></i> Xóa
+                            </a>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="10" class="text-danger">Không có sản phẩm nào phù hợp.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+@code {
+    private List<SanPhamDto>? sanPhams;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            sanPhams = await Http.GetFromJsonAsync<List<SanPhamDto>>("https://localhost:44373/api/admin/san-pham");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Lỗi khi load sản phẩm: " + ex.Message);
+        }
+    }
+
+    public class SanPhamDto
+    {
+        public int MaSanPham { get; set; }
+        public string TenSanPham { get; set; }
+        public string HinhAnh { get; set; }
+        public string MoTa { get; set; }
+        public decimal Gia { get; set; }
+        public int SoLuong { get; set; }
+        public int MaDanhMuc { get; set; }
+        public string TenDanhMuc { get; set; } = "";
+        public DateTime NgayTao { get; set; }
+        public DateTime NgayCapNhat { get; set; }
+    }
+}

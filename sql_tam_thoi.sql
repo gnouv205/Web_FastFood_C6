@@ -93,3 +93,26 @@ CREATE TABLE ThanhToan (
         (TrangThai = 'Đã thanh toán' AND NgayThanhToan IS NOT NULL)
     ) -- Ràng buộc: Nếu chưa thanh toán thì NgayThanhToan phải NULL
 );
+
+
+INSERT INTO DanhMucSanPhams (TenDanhMuc)
+VALUES 
+(N'Bánh Mì Kẹp'),
+(N'Combo'),
+(N'Gà Rán'),
+(N'Nước Uống'),
+(N'Rau Trộn'),
+(N'Tráng Miệng');
+
+INSERT INTO SanPhams (TenSanPham, HinhAnh, MoTa, Gia, SoLuong, MaDanhMuc, NgayTao, NgayCapNhat)
+VALUES 
+(N'Bánh mì kẹp thịt', N'/images/banhmiKep/banhmi1.jpg', N'Bánh mì kẹp thịt bò thơm ngon, hấp dẫn.', 45.00, 50, 1, GETDATE(), GETDATE()),
+(N'Combo Bánh mì và nước ngọt', N'/images/combo/combo8.jpg', N'Combo bánh mì kẹp và nước ngọt, tiết kiệm và ngon miệng.', 60.00, 100, 2, GETDATE(), GETDATE()),
+(N'Gà rán giòn', N'/images/garan/garan3.jpg', N'Gà rán giòn, thơm phức, ăn là ghiền.', 120.00, 40, 3, GETDATE(), GETDATE()),
+(N'Salad rau củ', N'/images/rautron/salad2.jpg', N'Salad rau củ tươi ngon, bổ dưỡng.', 35.00, 60, 4, GETDATE(), GETDATE()),
+(N'Tiramisu', N'/images/trangmieng/trangmieng5.jpg', N'Tiramisu truyền thống, ngọt ngào và béo ngậy.', 50.00, 30, 5, GETDATE(), GETDATE()),
+(N'Gà rán combo', N'/images/combo/combo5.jpg', N'Combo gà rán, khoai tây chiên và nước ngọt.', 150.00, 25, 2, GETDATE(), GETDATE()),
+(N'Bánh Plan Dâu', N'/images/trangmieng/trangmieng8.jpg', N'Ngon khó cưỡng.', 25.00, 100, 5, GETDATE(), GETDATE()),
+(N'Rau trái cây', N'/images/rautron/salad10.jpg', N'Chè trái cây tươi ngon, mát lạnh.', 20.00, 80, 4, GETDATE(), GETDATE()),
+(N'Coca', N'/images/nuocuong/nuocuong1.jpg', N'Coca uống thả ga.', 20.00, 80, 6, GETDATE(), GETDATE()),
+(N'Ép Cam', N'/images/nuocuong/nuocuong3.jpg', N'Cam Ép ngon tuyệt .', 25.00, 80, 6, GETDATE(), GETDATE());

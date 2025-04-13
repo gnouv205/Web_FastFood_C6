@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -6,6 +7,12 @@ using Web_food_Asm.Models;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+=======
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Web_food_Asm.Data;
+using Web_Food_Shared.Models;
+>>>>>>> 7b1c485 (Update View Blazor)
 using System.Security.Claims;
 
 namespace Web_food_Asm.Controllers

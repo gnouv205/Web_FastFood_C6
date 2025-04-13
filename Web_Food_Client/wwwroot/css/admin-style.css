@@ -1,0 +1,119 @@
+﻿<style >
+/* Avatar styles */
+.sidebar-header img {
+    width: 23px; /* Kích thước avatar */
+    height: 23px; /* Giữ kích thước vuông */
+    border-radius: 50%; /* Làm tròn hình ảnh */
+    object-fit: cover; /* Đảm bảo hình ảnh không bị méo */
+    margin-right: 5px; /* Khoảng cách với email */
+    vertical-align: middle; /* Căn giữa dọc với text */
+}
+
+.sidebar-header div a {
+    display: flex; /* Hiển thị inline với avatar */
+    align-items: center; /* Căn giữa dọc các phần tử con */
+    color: white;
+    text-decoration: none;
+    padding: 10px 0;
+    transition: color 0.3s;
+}
+
+    .sidebar-header div a:hover {
+        color: #1abc9c; /* Màu khi hover */
+    }
+
+/* Sidebar */
+#sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #333;
+    color: white;
+    padding-top: 20px;
+    transition: all 0.3s;
+}
+
+    #sidebar a {
+        color: white;
+        font-size: 16px;
+        padding: 10px 20px;
+        display: block;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+
+        #sidebar a:hover {
+            background-color: #1abc9c;
+            color: white;
+        }
+
+    #sidebar .sidebar-header h3 {
+        text-align: center;
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: #fff;
+    }
+
+    #sidebar ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+        #sidebar ul li {
+            border-bottom: 1px solid #444;
+        }
+
+/* Dropdown Menu */
+.dropdown-menu {
+    background-color: #333;
+    border: none;
+    width: 250px;
+}
+
+    .dropdown-menu li a {
+        color: white;
+        font-size: 16px;
+        padding: 10px 20px;
+        text-decoration: none;
+    }
+
+        .dropdown-menu li a:hover {
+            background-color: #1abc9c;
+        }
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-toggle::after {
+    content: '\f0d7';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    margin-left: 10px;
+}
+
+/* Main content */
+#content {
+    margin-left: 250px;
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+
+    #content header {
+        background-color: #fff;
+        padding: 15px 30px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+    }
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+</style >

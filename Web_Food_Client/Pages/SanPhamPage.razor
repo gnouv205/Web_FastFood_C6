@@ -1,0 +1,22 @@
+﻿@page "/sanpham"
+@inject HttpClient Http
+
+<h2 class="title text-center">Danh Mục Sản Phẩm</h2>
+
+@if (sanPhams == null)
+{
+    <p>Đang tải dữ liệu...</p>
+}
+else
+{
+    <DanhMucTab SanPhams="sanPhams" />
+}
+
+@code {
+    private List<SanPham> sanPhams;
+
+    protected override async Task OnInitializedAsync()
+    {
+        sanPhams = await Http.GetFromJsonAsync<List<SanPham>>("https://localhost:44373/api/SanPham");
+    }
+}

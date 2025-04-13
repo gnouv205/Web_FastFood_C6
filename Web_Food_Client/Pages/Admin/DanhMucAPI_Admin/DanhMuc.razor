@@ -1,0 +1,37 @@
+﻿@page "/admin/danhmuc"
+@inject HttpClient Http
+
+<h3>Danh Mục Sản Phẩm</h3>
+
+@if (danhMucs == null)
+{
+    <p>Đang tải...</p>
+}
+else if (!danhMucs.Any())
+{
+    <p>Không có danh mục nào.</p>
+}
+else
+{
+    <ul>
+        @foreach (var dm in danhMucs)
+        {
+            <li>@dm.MaDanhMuc - @dm.TenDanhMuc</li>
+        }
+    </ul>
+}
+
+@code {
+    private List<DanhMucSanPham> danhMucs;
+
+    protected override async Task OnInitializedAsync()
+    {
+        danhMucs = await Http.GetFromJsonAsync<List<DanhMucSanPham>>("api/admin/danh-muc");
+    }
+
+    public class DanhMucSanPham
+    {
+        public int MaDanhMuc { get; set; }
+        public string TenDanhMuc { get; set; }
+    }
+}

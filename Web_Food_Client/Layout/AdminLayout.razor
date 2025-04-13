@@ -1,0 +1,45 @@
+﻿@inherits LayoutComponentBase
+
+<!-- Sidebar -->
+<div id="sidebar">
+    <div class="sidebar-header">
+        <h3>Quốc Thịnh Food</h3>
+        @if (!string.IsNullOrEmpty(UserEmail))
+        {
+            <div>
+                <a href="@($"/admin/edit/{UserEmail}")">
+                    <img src="@UserAvatar" alt="Avatar của @UserEmail" />
+                    <span>@UserEmail</span>
+                </a>
+            </div>
+            <ul class="list-unstyled">
+                <li><NavLink href="/admin/dashboard"><i class="fa fa-tachometer-alt"></i> Dashboard</NavLink></li>
+                <li><NavLink href="/admin/san-pham"><i class="fa fa-cogs"></i> Quản lý sản phẩm</NavLink></li>
+                <li><NavLink href="/admin/donhang"><i class="fa fa-box"></i> Quản lý đơn hàng</NavLink></li>
+                <li><NavLink href="/admin/taikhoan-ad"><i class="fa fa-users"></i> Quản lý tài khoản</NavLink></li>
+                <li><NavLink href="/admin/roles"><i class="fa fa-users"></i> Quản lý vai trò</NavLink></li>
+                <li><NavLink href="/admin/logout"><i class="fa fa-sign-out-alt"></i> Đăng xuất</NavLink></li>
+            </ul>
+        }
+    </div>
+</div>
+
+<!-- Main content -->
+<div id="content">
+    <div class="">
+        <div class="row">
+            @Body
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2023 Quốc Thịnh Food. All Rights Reserved.</p>
+    <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+</footer>
+
+@code {
+    [Parameter] public string UserEmail { get; set; } = "admin@gmail.com"; // test trước
+    [Parameter] public string UserAvatar { get; set; } = "/images/avatar.jpg"; // test trước
+}

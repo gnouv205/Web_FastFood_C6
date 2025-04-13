@@ -1,14 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Http;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System;
-using System.IO;
-using Microsoft.AspNetCore.Hosting;
 using Web_food_Asm.Data;
-using Web_food_Asm.Models;
+using Web_Food_Shared.Dtos;
+using Web_Food_Shared.Models;
 
 namespace Web_food_Asm.Controllers
 {
@@ -62,118 +56,66 @@ namespace Web_food_Asm.Controllers
 
             return Ok(products);
         }
-        #endregion
+		#endregion
 
-        //#region Thêm Mới Sản Phẩm
-        ///// <summary>
-        ///// Thêm mới sản phẩm vào hệ thống, danh mục được lấy từ API.
-        ///// </summary>
-        //[HttpPost]
-        //public async Task<IActionResult> CreateProduct([FromForm] SanPham sanPham, IFormFile? ImageFile)
-        //{
-        //    if (!ModelState.IsValid) return BadRequest(ModelState);
+		#region Thêm Sản Phẩm Mới
+		/// <summary>
+		/// Thêm sản phẩm mới.
+		/// </summary>
+		[HttpPost]
+		public async Task<IActionResult> CreateProduct([FromForm] SanPhamCreateDto sanPhamDto, IFormFile? ImageFile)
+		{
+			if (!ModelState.IsValid) return BadRequest(ModelState);
 
-        //    // Kiểm tra xem danh mục có tồn tại không
-        //    var danhMuc = await _context.DanhMucSanPhams.FindAsync(sanPham.MaDanhMuc);
-        //    if (danhMuc == null)
-        //    {
-        //        return BadRequest("Danh mục không tồn tại. Vui lòng chọn danh mục hợp lệ.");
-        //    }
+			var danhMuc = await _context.DanhMucSanPhams.FindAsync(sanPhamDto.MaDanhMuc);
+			if (danhMuc == null)
+			{
+				return BadRequest("Danh mục không tồn tại.");
+			}
 
-        //    // Log để kiểm tra mã danh mục
-        //    Console.WriteLine($"Mã danh mục nhập vào: {sanPham.MaDanhMuc}");
+			var existingProduct = await _context.SanPhams
+				.FirstOrDefaultAsync(sp => sp.TenSanPham.ToLower() == sanPhamDto.TenSanPham!.ToLower() && sp.MaDanhMuc == sanPhamDto.MaDanhMuc);
 
-        //    // Kiểm tra sản phẩm có tồn tại trong danh mục không
-        //    var existingProduct = await _context.SanPhams
-        //        .FirstOrDefaultAsync(sp => sp.TenSanPham.ToLower() == sanPham.TenSanPham.ToLower() && sp.MaDanhMuc == sanPham.MaDanhMuc);
+			if (existingProduct != null)
+			{
+				existingProduct.SoLuong += sanPhamDto.SoLuong;
+				existingProduct.Gia = sanPhamDto.Gia;
+				existingProduct.MoTa = sanPhamDto.MoTa;
+				existingProduct.NgayCapNhat = DateTime.Now;
+				if (ImageFile != null)
+					existingProduct.HinhAnh = await SaveUserImage(ImageFile);
 
-        //    if (existingProduct != null)
-        //    {
-        //        existingProduct.SoLuong += sanPham.SoLuong;
-        //        existingProduct.Gia = sanPham.Gia;
-        //        existingProduct.MoTa = sanPham.MoTa;
-        //        existingProduct.NgayCapNhat = DateTime.Now;
-        //        if (ImageFile != null)
-        //            existingProduct.HinhAnh = await SaveUserImage(ImageFile);
+				_context.SanPhams.Update(existingProduct);
+			}
+			else
+			{
+				var newSanPham = new SanPham
+				{
+					TenSanPham = sanPhamDto.TenSanPham,
+					Gia = sanPhamDto.Gia,
+					SoLuong = sanPhamDto.SoLuong,
+					MaDanhMuc = sanPhamDto.MaDanhMuc,
+					MoTa = sanPhamDto.MoTa,
+					HinhAnh = ImageFile != null ? await SaveUserImage(ImageFile) : "/images/default.png",
+					NgayTao = DateTime.Now,
+					NgayCapNhat = DateTime.Now
+				};
 
-        //        _context.SanPhams.Update(existingProduct);
-        //    }
-        //    else
-        //    {
-        //        sanPham.HinhAnh = ImageFile != null ? await SaveUserImage(ImageFile) : "/images/default.png";
-        //        sanPham.NgayTao = DateTime.Now;
-        //        sanPham.NgayCapNhat = DateTime.Now;
+				await _context.SanPhams.AddAsync(newSanPham);
+			}
 
-        //        // Kiểm tra lại mã danh mục trước khi lưu
-        //        Console.WriteLine($"Mã danh mục trước khi lưu: {sanPham.MaDanhMuc}");
+			await _context.SaveChangesAsync();
+			return Ok();
+		}
 
-        //        await _context.SanPhams.AddAsync(sanPham);
-        //    }
 
-        //    await _context.SaveChangesAsync();
+		#endregion
 
-        //    // Kiểm tra lại giá trị sau khi lưu
-        //    Console.WriteLine($"Mã danh mục sau khi lưu: {sanPham.MaDanhMuc}");
-
-        //    return CreatedAtAction(nameof(GetProductById), new { id = sanPham.MaSanPham }, sanPham);
-        //}
-        //#endregion
-
-        #region Thêm Sản Phẩm Mới
-        /// <summary>
-        /// Thêm sản phẩm mới.
-        /// </summary>
-        [HttpPost]
-        public async Task<IActionResult> CreateProduct([FromForm] SanPham sanPham, IFormFile? ImageFile)
-        {
-            if (!ModelState.IsValid) return BadRequest(ModelState);
-
-            Console.WriteLine($"Nhận dữ liệu: MaDanhMuc = {sanPham.MaDanhMuc}, TenSanPham = {sanPham.TenSanPham}");
-
-            // Kiểm tra danh mục có tồn tại không
-            var danhMuc = await _context.DanhMucSanPhams.FindAsync(sanPham.MaDanhMuc);
-            if (danhMuc == null)
-            {
-                return BadRequest("Danh mục không tồn tại.");
-            }
-
-            var existingProduct = await _context.SanPhams
-                .FirstOrDefaultAsync(sp => sp.TenSanPham.ToLower() == sanPham.TenSanPham.ToLower() && sp.MaDanhMuc == sanPham.MaDanhMuc);
-
-            if (existingProduct != null)
-            {
-                existingProduct.SoLuong += sanPham.SoLuong;
-                existingProduct.Gia = sanPham.Gia;
-                existingProduct.MoTa = sanPham.MoTa;
-                existingProduct.NgayCapNhat = DateTime.Now;
-                if (ImageFile != null)
-                    existingProduct.HinhAnh = await SaveUserImage(ImageFile);
-
-                _context.SanPhams.Update(existingProduct);
-            }
-            else
-            {
-                sanPham.HinhAnh = ImageFile != null ? await SaveUserImage(ImageFile) : "/images/default.png";
-                sanPham.NgayTao = DateTime.Now;
-                sanPham.NgayCapNhat = DateTime.Now;
-
-                Console.WriteLine($"Trước khi lưu: MaDanhMuc = {sanPham.MaDanhMuc}");
-
-                sanPham.DanhMucSanPham = null;  // Ngăn EF tạo danh mục mới
-                await _context.SanPhams.AddAsync(sanPham);
-            }
-
-            await _context.SaveChangesAsync();
-            return CreatedAtAction(nameof(GetProductById), new { id = sanPham.MaSanPham }, sanPham);
-        }
-
-        #endregion
-
-        #region Lấy Danh Sách Danh Mục
-        /// <summary>
-        /// Lấy danh sách danh mục sản phẩm để hiển thị khi thêm sản phẩm.
-        /// </summary>
-        [HttpGet("categories-dropdown")]
+		#region Lấy Danh Sách Danh Mục
+		/// <summary>
+		/// Lấy danh sách danh mục sản phẩm để hiển thị khi thêm sản phẩm.
+		/// </summary>
+		[HttpGet("categories-dropdown")]
         public async Task<IActionResult> GetCategoriesForDropdown()
         {
             var categories = await _context.DanhMucSanPhams

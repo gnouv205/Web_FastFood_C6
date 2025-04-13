@@ -1,0 +1,18 @@
+﻿@page "/"
+@using Web_food_Asm.Models
+
+<Sidebar Categories="@categoryList" />
+<FeaturedProducts Products="@featuredProducts" />
+<ProductTabs Products="@allProducts" />
+
+@code {
+    List<Sidebar.DanhMucSanPham> categoryList = new()
+    {
+        new() { Id = "banhmkep", Name = "Bánh Mì Kẹp" },
+        new() { Id = "combo", Name = "Combo Thức Ăn" },
+        //...
+    };
+
+    List<SanPham> featuredProducts = new(); // gọi từ API
+    List<SanPham> allProducts = new(); // gọi từ API
+}

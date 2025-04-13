@@ -5,7 +5,7 @@ using Newtonsoft.Json.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using Web_food_Asm.Data;
-using Web_food_Asm.Models;
+using Web_Food_Shared.Models;
 using Web_food_Asm.Models.ViewModel;
 
 namespace Web_food_Asm.Controllers

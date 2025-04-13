@@ -1,0 +1,33 @@
+﻿@using Web_Food_Shared.Models
+@using Microsoft.AspNetCore.Components
+
+<Tabs>
+    <TabPanel Title="Tất cả">
+        <div class="row">
+            @foreach (var sp in SanPhams)
+            {
+                <SanPhamCard SanPham="sp" />
+            }
+        </div>
+    </TabPanel>
+
+    @if (DanhMucs is not null)
+    {
+        @foreach (var danhMuc in DanhMucs)
+        {
+            <TabPanel Title="@danhMuc.TenDanhMuc">
+                <div class="row">
+                    @foreach (var sp in SanPhams.Where(x => x.MaDanhMuc == danhMuc.MaDanhMuc))
+                    {
+                        <SanPhamCard SanPham="sp" />
+                    }
+                </div>
+            </TabPanel>
+        }
+    }
+</Tabs>
+
+@code {
+    [Parameter] public List<SanPham> SanPhams { get; set; } = new();
+    [Parameter] public List<DanhMucSanPham> DanhMucs { get; set; } = new();
+}

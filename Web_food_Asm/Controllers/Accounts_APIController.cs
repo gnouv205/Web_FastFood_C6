@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Web_food_Asm.Data;
-using Web_food_Asm.Models;
 using Web_food_Asm.Models.ViewModel;
+using Web_Food_Shared.Models;
 
 namespace Web_food_Asm.Controllers
 {

@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using Web_food_Asm.Models;
+using Web_Food_Shared.Models;
 using System.Threading.Tasks;
 
 namespace Web_food_Asm.Data

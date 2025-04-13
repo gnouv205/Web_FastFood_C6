@@ -3,7 +3,11 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 using System.Threading.Tasks;
+<<<<<<< HEAD
 using Web_food_Asm.Models;
+=======
+using Web_Food_Shared.Models;
+>>>>>>> 7b1c485 (Update View Blazor)
 
 namespace Web_food_Asm.Data
 {

@@ -1,0 +1,30 @@
+﻿@using Web_food_Asm.Models
+<div class="recommended_items">
+    <h2 class="title text-center">Sản phẩm được đề xuất</h2>
+    <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            @for (int i = 0; i < Products.Count; i += 3)
+            {
+                <div class="item @(i == 0 ? "active" : "")">
+                    <div class="row">
+                        @foreach (var p in Products.Skip(i).Take(3))
+                        {
+                            <ProductCard Product="p" />
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+        <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
+            <i class="fa fa-angle-left"></i>
+        </a>
+        <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
+            <i class="fa fa-angle-right"></i>
+        </a>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public List<SanPham>? Products { get; set; }
+}

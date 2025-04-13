@@ -1,0 +1,29 @@
+﻿@using Web_food_Asm.Models
+<div class="col-sm-3">
+    <div class="left-sidebar">
+        <h2>Danh Mục Sản Phẩm</h2>
+        <div class="panel-group category-products" id="accordian">
+            @foreach (var item in Categories)
+            {
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a href="#@item.Id" data-toggle="tab">@item.Name</a>
+                        </h4>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public List<DanhMucSanPham>? Categories { get; set; }
+
+    public class DanhMucSanPham
+    {
+        public string? Id { get; set; }
+        public string? Name { get; set; }
+    }
+}

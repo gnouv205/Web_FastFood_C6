@@ -1,0 +1,27 @@
+﻿@using Web_Food_Shared.Models
+@inject NavigationManager Navigation
+
+<div class="col-sm-3">
+    <div class="product-image-wrapper">
+        <div class="single-products">
+            <div class="productinfo text-center">
+                <img style="height: 200px;" src="@SanPham.HinhAnh" alt="@SanPham.TenSanPham" />
+                <h2>@SanPham.Gia.ToString("C")</h2>
+                <p>@SanPham.TenSanPham</p>
+                <button class="btn btn-primary" @onclick="AddToCart">
+                    <i class="fa fa-shopping-cart"></i> Thêm vào giỏ
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public SanPham SanPham { get; set; }
+
+    private void AddToCart()
+    {
+        // Gọi API hoặc Navigation tới trang giỏ hàng
+        Navigation.NavigateTo($"/giohang/add/{SanPham.MaSanPham}");
+    }
+}

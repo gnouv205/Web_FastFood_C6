@@ -1,0 +1,85 @@
+﻿@page "/admin/tai-khoan/create"
+@layout AdminLayout
+@using Web_Food_Client.Services
+@inject AccountService accountService
+
+<EditForm Model="@newUser" OnValidSubmit="HandleCreate">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <label>Username:</label>
+    <InputText @bind-Value="newUser.UserName" class="form-control" />
+
+    <label>Họ tên:</label>
+    <InputText @bind-Value="newUser.HoTen" class="form-control" />
+
+    <label>Email:</label>
+    <InputText @bind-Value="newUser.Email" class="form-control" />
+
+    <label>Điện thoại:</label>
+    <InputText @bind-Value="newUser.PhoneNumber" class="form-control" />
+
+    <label>Địa chỉ:</label>
+    <InputText @bind-Value="newUser.DiaChi" class="form-control" />
+
+    <label>Mật khẩu:</label>
+    <InputText @bind-Value="newUser.Password" type="password" class="form-control" />
+
+    <label>Vai trò:</label>
+    <InputSelect @bind-Value="selectedRole">
+        @foreach (var role in allRoles)
+        {
+            <option value="@role">@role</option>
+        }
+    </InputSelect>
+    <button type="button" @onclick="AddRole">+ Thêm Vai Trò</button>
+
+    <ul>
+        @foreach (var role in newUser.Roles)
+        {
+            <li>
+                @role <button type="button" @onclick="() => RemoveRole(role)">X</button>
+
+            </li>
+        }
+    </ul>
+
+    <button type="submit" class="btn btn-primary">Tạo tài khoản</button>
+</EditForm>
+
+@if (!string.IsNullOrEmpty(message))
+{
+    <p>@message</p>
+}
+
+@code {
+    UserDto newUser = new();
+    string selectedRole = "";
+    List<string> allRoles = new();
+    string message = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Lấy danh sách vai trò từ API nếu có
+        allRoles = new List<string> { "Admin", "User" }; // gọi từ RoleService nếu bạn có
+    }
+
+    void AddRole()
+    {
+        if (!string.IsNullOrEmpty(selectedRole) && !newUser.Roles.Contains(selectedRole))
+        {
+            newUser.Roles.Add(selectedRole);
+        }
+    }
+
+    void RemoveRole(string role)
+    {
+        newUser.Roles.Remove(role);
+    }
+
+    async Task HandleCreate()
+    {
+        var result = await accountService.CreateUserAsync(newUser);
+        message = result ?? "Có lỗi xảy ra";
+    }
+}

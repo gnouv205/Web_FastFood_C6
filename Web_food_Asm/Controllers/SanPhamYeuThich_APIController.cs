@@ -5,7 +5,11 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
 using Web_food_Asm.Data;
+<<<<<<< HEAD
 using Web_food_Asm.Models;
+=======
+using Web_Food_Shared.Models;
+>>>>>>> 7b1c485 (Update View Blazor)
 
 namespace Web_food_Asm.Controllers
 {

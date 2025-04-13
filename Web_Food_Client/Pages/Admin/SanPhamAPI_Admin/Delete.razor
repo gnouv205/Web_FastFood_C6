@@ -1,0 +1,75 @@
+﻿@page "/admin/san-pham/delete/{id:int}"
+@layout AdminLayout
+@inject HttpClient Http
+@inject NavigationManager Navigation
+
+<h1 class="text-center text-danger">Xóa Sản Phẩm</h1>
+
+<div class="text-left mb-4">
+    <button class="btn btn-outline-secondary btn-lg" @onclick="QuayLai">
+        <i class="fa fa-arrow-left"></i> Quay lại
+    </button>
+</div>
+
+<hr style="margin:1.5rem" />
+
+@if (sanPham != null)
+{
+    <div class="container">
+        <div class="row justify-content-center">
+
+            <!-- Ảnh sản phẩm -->
+            <div class="col-md-4 text-center">
+                <div class="avatar-preview mb-3">
+                    <img src="@sanPham.HinhAnh" alt="Ảnh Sản Phẩm" class="rounded-circle shadow" style="width:200px;height:200px;object-fit:cover;" />
+                </div>
+                <label class="font-weight-bold image-label text-muted">Ảnh Sản Phẩm</label>
+            </div>
+
+            <!-- Thông tin sản phẩm -->
+            <div class="col-md-8">
+                <div class="product-details">
+                    <div class="form-group">
+                        <label class="text-primary">Tên Sản Phẩm:</label>
+                        <p class="form-control-static font-weight-bold">@sanPham.TenSanPham</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="text-primary">Giá:</label>
+                        <p class="form-control-static text-success">@string.Format("{0:C}", sanPham.Gia)</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="text-primary">Số Lượng:</label>
+                        <p class="form-control-static">@sanPham.SoLuong</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="text-primary">Danh Mục:</label>
+                        <p class="form-control-static">@sanPham.TenDanhMuc</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="text-primary">Mô Tả:</label>
+                        <p class="form-control-static">@sanPham.MoTa</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="text-primary">Ngày Tạo:</label>
+                        <p class="form-control-static">@sanPham.NgayTao.ToString("dd/MM/yyyy")</p>
+                    </div>
+                </div>
+
+                <!-- Nút hành động -->
+                <div class="form-group text-center mt-4">
+                    <button class="btn btn-danger btn-lg shadow" @onclick="XacNhanXoa">Xóa</button>
+                    <button class="btn btn-secondary btn-lg shadow" @onclick="QuayLai">Hủy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <p>Đang tải thông tin sản phẩm...</p>
+}

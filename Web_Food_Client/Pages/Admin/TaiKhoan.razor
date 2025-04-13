@@ -1,0 +1,170 @@
+﻿@page "/admin/taikhoan-ad"
+@layout AdminLayout
+@using Web_Food_Client.Services
+@inject AccountService AccountService
+@inject JSRuntime JS
+
+
+
+
+<h3 class="text-lg font-semibold mb-4">Danh sách tài khoản</h3>
+
+@if (users == null)
+{
+    <p>Đang tải...</p>
+}
+else if (users.Count == 0)
+{
+    <p>Không có tài khoản nào.</p>
+}
+else
+{
+    <button class="bg-green-500 text-white px-4 py-2 mb-4 rounded" @onclick="CreateUser">
+        Thêm tài khoản
+    </button>
+
+
+    <table class="table-auto w-full border border-gray-300">
+        <thead class="bg-gray-200">
+            <tr>
+                <th>Ảnh</th>
+                <th>Họ tên</th>
+                <th>Email</th>
+                <th>SĐT</th>
+                <th>Tình trạng</th>
+                <th>Vai trò</th>
+                <th>Hành động</th> <!-- Thêm cột này -->
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in users)
+            {
+                <tr>
+                    <td><img src="images/users/@user.Hinh" alt="Ảnh" width="50" /></td>
+                    <td>@user.HoTen</td>
+                    <td>@user.Email</td>
+                    <td>@user.PhoneNumber</td>
+                    <td>@user.TinhTrang</td>
+                    <td>
+                        @if (user.Roles != null && user.Roles.Count > 0)
+                        {
+                            <ul>
+                                @foreach (var role in user.Roles)
+                                {
+                                    <li>@role</li>
+                                }
+                            </ul>
+                        }
+                        else
+                        {
+                            <em>Chưa có</em>
+                        }
+                    </td>
+                    <td>
+                        @* <button class="bg-blue-500 text-white px-3 py-1 rounded mr-2" @onclick="@(() => EditUser(user.Id))">Sửa</button> *@
+                        <button class="bg-red-500 text-white px-3 py-1 rounded" @onclick="@(() => DeleteUser(user.Id))">Xóa</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}
+
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 15px;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 12px;
+        border: 1px solid #ddd;
+    }
+
+    thead {
+        background-color: #f8f8f8;
+    }
+
+    th {
+        font-weight: 600;
+        background-color: #f0f0f0;
+        color: #333;
+    }
+
+    tr:nth-child(even) {
+        background-color: #fafafa;
+    }
+
+    tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    td img {
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    ul {
+        padding-left: 18px;
+        margin: 0;
+    }
+
+        ul li {
+            margin-bottom: 2px;
+        }
+
+    h3 {
+        font-size: 20px;
+        margin-bottom: 20px;
+        color: #2c3e50;
+    }
+
+
+    td img {
+        width: 40px;
+    }
+</style>
+
+
+
+@code {
+    private List<UserDto>? users;
+    private bool showCreateForm = false;
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        users = await AccountService.GetAllAsync();
+    }
+    private async Task DeleteUser(string id)
+    {
+        bool confirmed = await JS.InvokeAsync<bool>("confirm", $"Bạn có chắc muốn xóa tài khoản với ID: {id}?");
+        if (confirmed)
+        {
+            var result = await AccountService.DeleteAsync(id);
+            if (result)
+            {
+                users = await AccountService.GetAllAsync(); // Cập nhật lại danh sách
+            }
+            else
+            {
+                await JS.InvokeVoidAsync("alert", "Xóa thất bại!");
+            }
+        }
+    }
+
+    private UserDto newUser = new()
+        {
+            Roles = new List<string>()
+        };
+    private void CreateUser()
+    {
+        showCreateForm = true;
+        newUser = new UserDto(); // Reset dữ liệu
+    }
+
+}
