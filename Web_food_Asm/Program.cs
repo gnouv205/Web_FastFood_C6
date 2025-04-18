@@ -1,39 +1,39 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-<<<<<<< HEAD
-using Microsoft.Extensions.Configuration;
-=======
 using Microsoft.Extensions.FileProviders;
->>>>>>> 7b1c485 (Update View Blazor)
-using Microsoft.OpenApi.Models;
 using System.Reflection;
 using Web_food_Asm.Data;
 using Web_Food_Shared.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-<<<<<<< HEAD
-// Đăng ký các dịch vụ
-=======
+builder.Services.AddDbContext<ConnectStr>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ConnectStr"));
+});
+
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy(name: MyAllowSpecificOrigins,
-        policy =>
-        {
-            policy.WithOrigins("https://localhost:7218")
-                   .AllowAnyHeader()
-                   .AllowAnyMethod();
-        });
+	options.AddPolicy(name: MyAllowSpecificOrigins,
+		policy =>
+		{
+			policy.WithOrigins(
+					"https://localhost:7218", 
+					"https://localhost:7104")
+			   .AllowAnyHeader()
+			   .AllowAnyMethod()
+			   .AllowCredentials();
+		});
 });
 
->>>>>>> 7b1c485 (Update View Blazor)
+
 builder.Services.AddSingleton<SendMail>();
 builder.Services.AddSingleton<FileImgUpload>();
 
-// Đăng ký DbContext với DI container, cấu hình sử dụng SQL Server với chuỗi kết nối từ appsettings.json
-builder.Services.AddDbContext<ConnectStr>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("ConnectStr")));
+
 
 // Đăng ký Identity
 builder.Services.AddIdentity<KhachHang, IdentityRole>()
@@ -51,11 +51,6 @@ builder.Services.AddSwaggerGen(c =>
     c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
 });
 
-<<<<<<< HEAD
-// Đăng ký dịch vụ Session
-=======
-// đăng ký dịch vụ Session
->>>>>>> 7b1c485 (Update View Blazor)
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
 {
@@ -63,10 +58,7 @@ builder.Services.AddSession(options =>
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
-<<<<<<< HEAD
-=======
 
->>>>>>> 7b1c485 (Update View Blazor)
 
 // Thêm dịch vụ điều khiển (Controllers)
 builder.Services.AddControllers();
@@ -77,13 +69,10 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-<<<<<<< HEAD
-// Gọi hàm tạo tài khoản mặc định
-=======
+
 app.UseCors(MyAllowSpecificOrigins);
 
 // Gọi hàm tạo tài khoản mặc địnhz
->>>>>>> 7b1c485 (Update View Blazor)
 using (var scope = app.Services.CreateScope())
 {
     await DataSeeder.SeedRolesAndUsers(
@@ -100,16 +89,15 @@ if (app.Environment.IsDevelopment())
 }
 app.UseStaticFiles(); // Cho phép sử dụng wwwroot
 
-<<<<<<< HEAD
-=======
+
 app.UseStaticFiles(new StaticFileOptions
 {
 	FileProvider = new PhysicalFileProvider(
 		Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")),
-	RequestPath = "/images"
+	RequestPath = "/images/newfood"
 });
 
->>>>>>> 7b1c485 (Update View Blazor)
+
 app.UseSession();
 app.UseHttpsRedirection();
 

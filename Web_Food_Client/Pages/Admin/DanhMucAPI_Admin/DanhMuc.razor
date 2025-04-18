@@ -1,37 +1,155 @@
 ﻿@page "/admin/danhmuc"
+@layout AdminLayout
 @inject HttpClient Http
+@page "/admin/danh-muc"
+@inject DanhMucService danhMucService
+@inject NavigationManager nav
 
-<h3>Danh Mục Sản Phẩm</h3>
+<style>
+    /* Admin Danh Mục Page Styles */
+    h3 {
+        color: #2c3e50;
+        margin-bottom: 1.5rem;
+        font-weight: 600;
+        border-bottom: 2px solid #3498db;
+        padding-bottom: 0.5rem;
+    }
+
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+        .table thead tr {
+            background-color: #3498db;
+            color: white;
+            text-align: left;
+        }
+
+        .table th,
+        .table td {
+            padding: 12px 15px;
+        }
+
+        .table tbody tr {
+            border-bottom: 1px solid #dddddd;
+            transition: all 0.2s ease;
+        }
+
+            .table tbody tr:nth-of-type(even) {
+                background-color: #f8f9fa;
+            }
+
+            .table tbody tr:last-of-type {
+                border-bottom: 2px solid #3498db;
+            }
+
+            .table tbody tr:hover {
+                background-color: #e3f2fd;
+                transform: translateX(4px);
+            }
+
+    .btn {
+        padding: 6px 12px;
+        border-radius: 4px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: none;
+        margin-right: 5px;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        color: white;
+    }
+
+        .btn-success:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+    .btn-primary {
+        background-color: #007bff;
+        color: white;
+    }
+
+        .btn-primary:hover {
+            background-color: #0069d9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+    .btn-danger {
+        background-color: #dc3545;
+        color: white;
+    }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+    /* Loading style */
+    p {
+        color: #6c757d;
+        font-style: italic;
+        animation: pulse 1.5s infinite;
+    }
+
+    }
+</style>
+
+<h3>Danh sách danh mục</h3>
+
+<button class="btn btn-success mb-2" @onclick="@(() => nav.NavigateTo("/admin/danh-muc/them"))">+ Thêm danh mục</button>
+
 
 @if (danhMucs == null)
 {
     <p>Đang tải...</p>
 }
-else if (!danhMucs.Any())
-{
-    <p>Không có danh mục nào.</p>
-}
 else
 {
-    <ul>
-        @foreach (var dm in danhMucs)
-        {
-            <li>@dm.MaDanhMuc - @dm.TenDanhMuc</li>
-        }
-    </ul>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Tên danh mục</th>
+                <th>Hành động</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var dm in danhMucs)
+            {
+                <tr>
+                    <td>@dm.TenDanhMuc</td>
+                    <td>
+                        <button class="btn btn-sm btn-primary" @onclick="@(() => nav.NavigateTo($"/admin/danh-muc/sua/{dm.MaDanhMuc}"))">Sửa</button>
+                        <button class="btn btn-sm btn-danger" @onclick="@(() => Delete(dm.MaDanhMuc))">Xoá</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 }
 
 @code {
-    private List<DanhMucSanPham> danhMucs;
+    private List<DanhMucSanPham>? danhMucs;
 
     protected override async Task OnInitializedAsync()
     {
-        danhMucs = await Http.GetFromJsonAsync<List<DanhMucSanPham>>("api/admin/danh-muc");
+        danhMucs = await danhMucService.GetAllCategories();
     }
 
-    public class DanhMucSanPham
+    private async Task Delete(int id)
     {
-        public int MaDanhMuc { get; set; }
-        public string TenDanhMuc { get; set; }
+        if (!await danhMucService.DeleteCategoryAsync(id)) return;
+        danhMucs = await danhMucService.GetAllCategories();
     }
 }
+

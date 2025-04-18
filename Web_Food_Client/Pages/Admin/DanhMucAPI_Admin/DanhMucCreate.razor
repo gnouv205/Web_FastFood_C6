@@ -1,0 +1,29 @@
+﻿@page "/admin/danh-muc/them"
+@layout AdminLayout
+@inject DanhMucService danhMucService
+@inject NavigationManager nav
+
+<h3>Thêm danh mục</h3>
+
+<EditForm Model="danhMuc" OnValidSubmit="HandleSubmit">
+    <DataAnnotationsValidator />
+    <InputText @bind-Value="danhMuc.TenDanhMuc" class="form-control" placeholder="Tên danh mục" />
+    <ValidationMessage For="@(() => danhMuc.TenDanhMuc)" />
+    <br />
+    <button class="btn btn-success" type="submit">Thêm</button>
+    <button class="btn btn-secondary ms-2" type="button" @onclick="Huy">Hủy</button>
+</EditForm>
+
+@code {
+    private DanhMucSanPham danhMuc = new DanhMucSanPham();
+
+    private async Task HandleSubmit()
+    {
+        await danhMucService.CreateCategory(danhMuc);
+        nav.NavigateTo("/admin/danh-muc");
+    }
+    void Huy()
+    {
+        nav.NavigateTo("/admin/danh-muc");
+    }
+}

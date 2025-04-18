@@ -107,7 +107,7 @@ namespace Web_food_Asm.Controllers
         /// <response code="400">Dữ liệu không hợp lệ</response>
         /// <response code="404">Không tìm thấy quyền</response>
         /// <response code="409">Tên quyền mới đã tồn tại</response>
-        [HttpPut("{id}/cap-nhat-quyen")]
+        [HttpPut("cap-nhat-quyen/{id}")]
         public async Task<IActionResult> UpdateRole(string id, [FromBody] string newName)
         {
             if (string.IsNullOrEmpty(id) || string.IsNullOrEmpty(newName))

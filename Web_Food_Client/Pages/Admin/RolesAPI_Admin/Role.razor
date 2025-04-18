@@ -1,0 +1,233 @@
+﻿@page "/admin/vai-tro"
+@layout AdminLayout
+@inject RoleServices roleService
+@inject NavigationManager navigationManager
+@inject Blazored.Toast.Services.IToastService ToastService
+
+<style>
+    /* Admin Roles Page - Improved Styles */
+    .roles-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 1.5rem;
+    }
+
+    .roles-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+    }
+
+    .roles-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #1a365d;
+        margin: 0;
+    }
+
+    .add-role-btn {
+        background-color: #4299e1;
+        color: white;
+        padding: 0.5rem 1.25rem;
+        border-radius: 6px;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all 0.2s ease;
+        border: none;
+        cursor: pointer;
+    }
+
+        .add-role-btn:hover {
+            background-color: #3182ce;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+    .roles-list {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+    }
+
+    .role-item {
+        padding: 1.25rem;
+        border-bottom: 1px solid #edf2f7;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: all 0.2s ease;
+    }
+
+        .role-item:last-child {
+            border-bottom: none;
+        }
+
+        .role-item:hover {
+            background-color: #f8fafc;
+        }
+
+    .role-name {
+        font-weight: 600;
+        color: #2d3748;
+        font-size: 1.05rem;
+    }
+
+    .role-actions {
+        display: flex;
+        gap: 0.75rem;
+    }
+
+    .action-btn {
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        font-weight: 500;
+        font-size: 0.9rem;
+        transition: all 0.2s ease;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+    }
+
+    .detail-btn {
+        background-color: #48bb78;
+        color: white;
+    }
+
+        .detail-btn:hover {
+            background-color: #38a169;
+            transform: translateY(-1px);
+        }
+
+    .edit-btn {
+        background-color: #ed8936;
+        color: white;
+    }
+
+        .edit-btn:hover {
+            background-color: #dd6b20;
+            transform: translateY(-1px);
+        }
+
+    .delete-btn {
+        background-color: #f56565;
+        color: white;
+    }
+
+        .delete-btn:hover {
+            background-color: #e53e3e;
+            transform: translateY(-1px);
+        }
+
+    .loading-state, .empty-state {
+        text-align: center;
+        padding: 2rem;
+        color: #718096;
+        font-size: 1rem;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Responsive Design */
+    @@media (max-width: 640px) {
+        .role-item {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .role-actions {
+            width: 100%;
+            justify-content: flex-end;
+        }
+    }
+</style>
+
+<div class="roles-container">
+    <div class="roles-header">
+        <h3 class="roles-title">Danh sách vai trò</h3>
+        <button class="add-role-btn" @onclick="ThemRole">
+            <span>➕</span> Thêm vai trò
+        </button>
+    </div>
+
+    @if (roles == null)
+    {
+        <div class="loading-state">Đang tải danh sách vai trò...</div>
+    }
+    else if (!roles.Any())
+    {
+        <div class="empty-state">Không có vai trò nào.</div>
+    }
+    else
+    {
+        <div class="roles-list">
+            @foreach (var role in roles)
+            {
+                <div class="role-item">
+                    <span class="role-name">@role.Name</span>
+                    <div class="role-actions">
+                        <button class="action-btn detail-btn" @onclick="() => XemChiTiet(role.Id)">Chi tiết</button>
+                        <button class="action-btn edit-btn" @onclick="() => SuaRole(role.Id)">Sửa</button>
+                        <button class="action-btn delete-btn" @onclick="() => XoaRole(role.Id)">Xóa</button>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+@code {
+    List<RoleDto> roles;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadRolesAsync();
+    }
+
+    async Task LoadRolesAsync()
+    {
+        roles = await roleService.GetAllRolesAsync();
+    }
+
+    void XemChiTiet(string id)
+    {
+        navigationManager.NavigateTo($"/admin/vai-tro/details/{id}");
+    }
+
+    void SuaRole(string id)
+    {
+        navigationManager.NavigateTo($"/admin/vai-tro/edit/{id}");
+    }
+
+    void ThemRole()
+    {
+        navigationManager.NavigateTo("/admin/vai-tro/create");
+    }
+
+    async Task XoaRole(string id)
+    {
+        var confirm = await JS.InvokeAsync<bool>("confirm", "Bạn có chắc chắn muốn xóa quyền này?");
+        if (confirm)
+        {
+            var res = await roleService.DeleteRole(id);
+            if (res.IsSuccessStatusCode)
+            {
+                ToastService.ShowSuccess("Xóa vai trò thành công!");
+                await LoadRolesAsync();
+            }
+            else
+            {
+                var error = await res.Content.ReadAsStringAsync();
+                ToastService.ShowError($"Xóa thất bại: {error}");
+            }
+        }
+    }
+
+    [Inject] IJSRuntime JS { get; set; }
+}

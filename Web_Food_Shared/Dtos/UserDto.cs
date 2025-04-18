@@ -21,4 +21,8 @@ namespace Web_Food_Shared.Dtos
 		public string Password { get; set; } = string.Empty;
 		public List<string> Roles { get; set; }
 	}
+	public class RoleViewModel
+	{
+		public List<string> RoleNames { get; set; }
+	}
 }

@@ -1,0 +1,145 @@
+﻿@page "/admin/vai-tro/create"
+@layout AdminLayout
+@inject HttpClient Http
+@inject RoleServices roleServices
+@inject Blazored.Toast.Services.IToastService ToastService
+
+
+<style>
+    /* Create Role Page Styles */
+    .create-role-container {
+        max-width: 600px;
+        margin: 2rem auto;
+        padding: 2rem;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .create-role-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #2d3748;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 2px solid #edf2f7;
+    }
+
+    .role-input-container {
+        display: flex;
+        gap: 0.75rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .role-input {
+        flex: 1;
+        padding: 0.75rem 1rem;
+        border: 2px solid #e2e8f0;
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        outline: none;
+    }
+
+    .role-input:focus {
+        border-color: #4299e1;
+        box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
+    }
+
+    .create-btn {
+        background-color: #4299e1;
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 1rem;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .create-btn:hover {
+        background-color: #3182ce;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .create-btn:active {
+        transform: translateY(0);
+    }
+
+    .success-message {
+        margin-top: 1rem;
+        padding: 0.75rem 1rem;
+        background-color: #f0fff4;
+        color: #38a169;
+        border: 1px solid #c6f6d5;
+        border-radius: 8px;
+        font-weight: 500;
+        animation: fadeIn 0.3s ease;
+    }
+
+    @@keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive Design */
+    @@media (max-width: 640px) {
+        .role-input-container {
+            flex-direction: column;
+        }
+        
+        .create-btn {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+</style>
+
+<div class="create-role-container">
+    <h3 class="create-role-title">Thêm quyền mới</h3>
+    
+    <div class="role-input-container">
+        <InputText @bind-Value="roleName" class="role-input" placeholder="Nhập tên quyền..." />
+        <button class="create-btn" @onclick="CreateRole">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd" />
+            </svg>
+            Tạo quyền
+        </button>
+    </div>
+
+    @if (!string.IsNullOrEmpty(message))
+    {
+        <div class="success-message">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg>
+            @message
+        </div>
+    }
+</div>
+
+@code {
+    private string roleName;
+    private string message;
+
+    private async Task CreateRole()
+    {
+        var response = await roleServices.CreateRole(roleName);
+        if (response.IsSuccessStatusCode)
+        {
+            ToastService.ShowSuccess("Thêm quyền thành công!");
+            roleName = string.Empty;
+        }
+        else
+        {
+            var error = await response.Content.ReadAsStringAsync();
+            ToastService.ShowError($"Thêm quyền thất bại: {error}");
+        }
+    }
+}

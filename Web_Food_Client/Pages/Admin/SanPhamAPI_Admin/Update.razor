@@ -1,0 +1,116 @@
+﻿@page "/admin/san-pham/edit/{maSanPham:int}"
+@layout AdminLayout
+@inject HttpClient Http
+@inject SanPhamService sanPhamService
+@inject NavigationManager nav
+
+<h3 class="text-xl font-semibold mb-4">Cập nhật sản phẩm</h3>
+
+@* <div class="text-left mb-4">
+    <button class="btn btn-outline-secondary btn-lg" @onclick="QuayLai">
+        <i class="fa fa-arrow-left"></i> Quay lại
+    </button>
+</div> *@
+
+<EditForm Model="sanPhamModel" OnValidSubmit="HandleUpdate">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="mb-3">
+        <label>Tên sản phẩm:</label>
+        <InputText @bind-Value="sanPhamModel.tenSanPham" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Giá:</label>
+        <InputNumber @bind-Value="sanPhamModel.gia" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Số lượng:</label>
+        <InputNumber @bind-Value="sanPhamModel.soLuong" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Mô tả:</label>
+        <InputTextArea @bind-Value="sanPhamModel.moTa" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Danh mục:</label>
+        <InputSelect @bind-Value="sanPhamModel.maDanhMuc" class="form-control">
+            <option value="">-- Chọn danh mục --</option>
+            @foreach (var dm in danhMucListModel)
+            {
+                <option value="@dm.MaDanhMuc">@dm.TenDanhMuc</option>
+            }
+        </InputSelect>
+    </div>
+
+    <div class="mb-3">
+        <label>Hình ảnh mới (nếu muốn thay đổi):</label>
+        <InputFile OnChange="HandleImageUpload" />
+    </div>
+
+    @if (!string.IsNullOrEmpty(sanPhamModel.hinhAnh))
+    {
+        <div class="mb-3">
+            <label>Ảnh hiện tại:</label><br />
+            <img src="@sanPhamModel.hinhAnh" width="150" />
+        </div>
+    }
+
+    <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+</EditForm>
+
+@code {
+    [Parameter] public int maSanPham { get; set; }
+
+    private SanPhamDtos sanPhamModel = new();
+    private List<DanhMucDto> danhMucListModel = new();
+    private IBrowserFile? imageFile;
+
+    protected override async Task OnInitializedAsync()
+    {
+        sanPhamModel = await sanPhamService.GetSanPhamById(maSanPham);
+        danhMucListModel = await sanPhamService.GetDanhMucDropdownAsync();
+    }
+
+    private async Task HandleUpdate()
+    {
+        var content = new MultipartFormDataContent();
+
+        content.Add(new StringContent(sanPhamModel.tenSanPham), "TenSanPham"); // PascalCase
+        content.Add(new StringContent(sanPhamModel.gia.ToString()), "Gia");
+        content.Add(new StringContent(sanPhamModel.soLuong.ToString()), "SoLuong");
+        content.Add(new StringContent(sanPhamModel.maDanhMuc.ToString()), "MaDanhMuc");
+        content.Add(new StringContent(sanPhamModel.moTa ?? ""), "MoTa");
+
+        if (imageFile != null)
+        {
+            var stream = imageFile.OpenReadStream(10 * 1024 * 1024);
+            content.Add(new StreamContent(stream), "ImageFile", imageFile.Name); // Tên đúng như trong API
+        }
+
+
+        var result = await sanPhamService.UpdateSanPhamAsync(maSanPham, content);
+        if (result.IsSuccessStatusCode)
+        {
+            nav.NavigateTo("/admin/san-pham");
+        }
+        else
+        {
+            Console.WriteLine("Lỗi khi cập nhật sản phẩm");
+        }
+    }
+
+    private void HandleImageUpload(InputFileChangeEventArgs e)
+    {
+        imageFile = e.File;
+    }
+
+    private void QuayLai()
+    {
+        nav.NavigateTo("/admin/san-pham");
+    }
+}

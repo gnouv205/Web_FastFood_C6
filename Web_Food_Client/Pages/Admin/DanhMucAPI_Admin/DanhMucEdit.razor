@@ -1,0 +1,45 @@
+﻿@page "/admin/danh-muc/sua/{id:int}"
+@layout AdminLayout
+@inject DanhMucService danhMucService
+@inject NavigationManager nav
+
+
+<h3>Sửa danh mục</h3>
+
+@if (danhMuc == null)
+{
+    <p>Đang tải danh mục...</p>
+}
+else
+{
+    <EditForm Model="danhMuc" OnValidSubmit="HandleSubmit">
+        <DataAnnotationsValidator />
+        <InputText @bind-Value="danhMuc.TenDanhMuc" class="form-control" />
+        <ValidationMessage For="@(() => danhMuc.TenDanhMuc)" />
+        <br />
+        <button class="btn btn-primary" type="submit">Cập nhật</button>
+        <button class="btn btn-secondary ms-2" type="button" @onclick="Huy">Hủy</button>
+
+    </EditForm>
+}
+
+@code {
+    [Parameter] public int Id { get; set; }
+
+    private DanhMucSanPham? danhMuc;
+
+    protected override async Task OnInitializedAsync()
+    {
+        danhMuc = await danhMucService.GetCategoryById(Id);
+    }
+
+    private async Task HandleSubmit()
+    {
+        await danhMucService.UpdateCategory(danhMuc!, Id);
+        nav.NavigateTo("/admin/danh-muc");
+    }
+    void Huy()
+    {
+        nav.NavigateTo("/admin/danh-muc");
+    }
+}

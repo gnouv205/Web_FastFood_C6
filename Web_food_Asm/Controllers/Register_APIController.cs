@@ -56,7 +56,7 @@ namespace Web_food_Asm.Controllers
                 HoTen = model.HoTen,
                 UserName = model.Email,
                 Email = model.Email,
-                PasswordHash = model.Password,
+                //PasswordHash = model.Password,
                 PhoneNumber = model.PhoneNumber,
                 DiaChi = model.DiaChi,
             };

@@ -1,0 +1,188 @@
+﻿@page "/admin/vai-tro/details/{id}"
+@layout AdminLayout
+@inject RoleServices roleServices
+
+<style>
+    /* Role Detail Page Styles */
+    .role-detail-container {
+        max-width: 800px;
+        margin: 2rem auto;
+        padding: 2rem;
+        background-color: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .role-detail-title {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: #2d3748;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 2px solid #edf2f7;
+    }
+
+    .loading-text {
+        color: #718096;
+        font-size: 1.1rem;
+        text-align: center;
+        padding: 2rem;
+    }
+
+    .role-info {
+        background-color: #f8fafc;
+        padding: 1.5rem;
+        border-radius: 8px;
+        margin-bottom: 2rem;
+    }
+
+    .role-info-item {
+        margin-bottom: 0.75rem;
+        display: flex;
+        align-items: center;
+    }
+
+    .role-info-label {
+        font-weight: 600;
+        color: #4a5568;
+        min-width: 120px;
+    }
+
+    .role-info-value {
+        color: #2d3748;
+        font-weight: 500;
+    }
+
+    .user-list-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #2d3748;
+        margin-bottom: 1rem;
+    }
+
+    .user-list {
+        background-color: #fff;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .user-list-header {
+        display: flex;
+        background-color: #edf2f7;
+        padding: 0.75rem 1.5rem;
+        font-weight: 600;
+        color: #4a5568;
+    }
+
+    .user-list-item {
+        display: flex;
+        padding: 1rem 1.5rem;
+        border-bottom: 1px solid #edf2f7;
+        align-items: center;
+    }
+
+        .user-list-item:last-child {
+            border-bottom: none;
+        }
+
+        .user-list-item:hover {
+            background-color: #f8fafc;
+        }
+
+    .user-name {
+        flex: 1;
+        color: #2d3748;
+        font-weight: 500;
+    }
+
+    .user-email {
+        flex: 2;
+        color: #4a5568;
+    }
+
+    .empty-users {
+        padding: 1.5rem;
+        text-align: center;
+        color: #718096;
+        font-style: italic;
+    }
+
+    /* Responsive Design */
+    @@media (max-width: 640px) {
+        .role-detail-container {
+            padding: 1.5rem;
+        }
+
+        .user-list-header {
+            display: none;
+        }
+
+        .user-list-item {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .user-name, .user-email {
+            flex: none;
+            width: 100%;
+        }
+    }
+</style>
+
+<div class="role-detail-container">
+    <h3 class="role-detail-title">Chi tiết quyền</h3>
+
+    @if (role == null)
+    {
+        <div class="loading-text">Đang tải...</div>
+    }
+    else
+    {
+        <div class="role-info">
+            <div class="role-info-item">
+                <span class="role-info-label">Tên quyền:</span>
+                <span class="role-info-value">@role.Name</span>
+            </div>
+            <div class="role-info-item">
+                <span class="role-info-label">Số người dùng:</span>
+                <span class="role-info-value">@role.TotalAccounts</span>
+            </div>
+        </div>
+
+        <h4 class="user-list-title">Danh sách người dùng</h4>
+
+        @if (role.Users.Any())
+        {
+            <div class="user-list">
+                <div class="user-list-header">
+                    <div class="user-name">Tên đăng nhập</div>
+                    <div class="user-email">Email</div>
+                </div>
+
+                @foreach (var user in role.Users)
+                {
+                    <div class="user-list-item">
+                        <div class="user-name">@user.UserName</div>
+                        <div class="user-email">@user.Email</div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="empty-users">Không có người dùng nào trong quyền này</div>
+        }
+    }
+</div>
+
+@code {
+    [Parameter] public string id { get; set; }
+    private RoleDetailDto role;
+
+    protected override async Task OnInitializedAsync()
+    {
+        role = await roleServices.GetRoleByIdAsync(id);
+    }
+}

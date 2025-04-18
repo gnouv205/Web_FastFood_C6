@@ -1,134 +1,84 @@
 ﻿@page "/admin/san-pham/create"
 @layout AdminLayout
 @inject HttpClient Http
-@inject NavigationManager Navigation
+@inject SanPhamService sanPhamService
+@inject NavigationManager nav
 
-<h3 class="text-center">Tạo Mới Sản Phẩm</h3>
+<h3 class="text-xl font-semibold mb-4">Thêm sản phẩm mới</h3>
 
-<div class="text-left mb-4">
-    <a href="/admin/san-pham" class="btn btn-outline-secondary btn-lg">
-        <i class="fa fa-arrow-left"></i> Quay lại
-    </a>
-</div>
-
-<hr style="margin:1.5rem" />
-
-<EditForm Model="sanPham" OnValidSubmit="HandleValidSubmit">
+<EditForm Model="sanPham" OnValidSubmit="HandleSubmit">
     <DataAnnotationsValidator />
     <ValidationSummary />
 
-    <div class="row">
-        <div class="col-md-4 text-center">
-            <div class="avatar-preview mb-3">
-                <img src="@previewImageUrl" class="rounded-circle" style="width: 200px; height: 200px; object-fit: cover; border: 4px solid #28a745;" />
-            </div>
-            <label class="font-weight-bold image-label">Ảnh Sản Phẩm</label>
-            <InputFile OnChange="OnInputFileChange" />
-        </div>
-
-        <div class="col-md-8">
-            <div class="form-custom">
-                <div class="form-group">
-                    <label>Tên Sản Phẩm</label>
-                    <InputText class="form-control" @bind-Value="sanPham.TenSanPham" />
-                </div>
-
-                <div class="form-group">
-                    <label>Giá</label>
-                    <InputNumber class="form-control" @bind-Value="sanPham.Gia" />
-                </div>
-
-                <div class="form-group">
-                    <label>Số Lượng</label>
-                    <InputNumber class="form-control" @bind-Value="sanPham.SoLuong" />
-                </div>
-
-                <div class="form-group">
-                    <label>Danh Mục</label>
-                    <InputSelect class="form-control" @bind-Value="sanPham.MaDanhMuc">
-                        <option value="">-- Chọn danh mục --</option>
-                        @foreach (var category in danhMucList)
-                        {
-                            <option value="@category.MaDanhMuc">@category.TenDanhMuc</option>
-                        }
-                    </InputSelect>
-                </div>
-
-                <div class="form-group">
-                    <label>Mô Tả</label>
-                    <InputTextArea class="form-control" @bind-Value="sanPham.MoTa" Rows="4" />
-                </div>
-
-                <div class="form-group">
-                    <button class="btn btn-success btn-lg" type="submit">Tạo Sản Phẩm</button>
-                </div>
-            </div>
-        </div>
+    <div class="mb-3">
+        <label>Tên sản phẩm:</label>
+        <InputText @bind-Value="sanPham.TenSanPham" class="form-control" />
     </div>
+
+    <div class="mb-3">
+        <label>Giá:</label>
+        <InputNumber @bind-Value="sanPham.Gia" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Số lượng:</label>
+        <InputNumber @bind-Value="sanPham.SoLuong" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Mô tả:</label>
+        <InputTextArea @bind-Value="sanPham.MoTa" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Danh mục:</label>
+        <InputSelect @bind-Value="sanPham.MaDanhMuc" class="form-control">
+            <option value="">-- Chọn danh mục --</option>
+            @if (danhMucList != null)
+            {
+                @foreach (var dm in danhMucList)
+                {
+                    <option value="@dm.MaDanhMuc">@dm.TenDanhMuc</option>
+                }
+            }
+        </InputSelect>
+    </div>
+
+    <div class="mb-3">
+        <label>Hình ảnh:</label>
+        <InputFile OnChange="HandleImageUpload" />
+    </div>
+
+    <button type="submit" class="btn btn-success">Thêm sản phẩm</button>
 </EditForm>
 
 @code {
-    private SanPham sanPham = new();
-    private List<DanhMuc> danhMucList = new();
-    private IBrowserFile? selectedFile;
-    private string previewImageUrl = "/images/logo/logo.jpg";
+    private SanPhamCreateDto sanPham = new();
+    private List<DanhMucDto> danhMucList = new();
+    private IBrowserFile? imageFile;
 
     protected override async Task OnInitializedAsync()
     {
-        danhMucList = await Http.GetFromJsonAsync<List<DanhMuc>>("/api/admin/san-pham/categories-dropdown") ?? new();
+        danhMucList = await sanPhamService.GetDanhMucDropdownAsync();
     }
 
-    private async Task OnInputFileChange(InputFileChangeEventArgs e)
+    private async Task HandleSubmit()
     {
-        selectedFile = e.File;
-        using var stream = selectedFile.OpenReadStream(512000);
-        var buffer = new byte[selectedFile.Size];
-        await stream.ReadAsync(buffer);
-        previewImageUrl = $"data:{selectedFile.ContentType};base64,{Convert.ToBase64String(buffer)}";
-    }
-
-    private async Task HandleValidSubmit()
-    {
-        var content = new MultipartFormDataContent();
-        content.Add(new StringContent(sanPham.TenSanPham ?? ""), "TenSanPham");
-        content.Add(new StringContent(sanPham.Gia.ToString()), "Gia");
-        content.Add(new StringContent(sanPham.SoLuong.ToString()), "SoLuong");
-        content.Add(new StringContent(sanPham.MaDanhMuc.ToString()), "MaDanhMuc");
-        content.Add(new StringContent(sanPham.MoTa ?? ""), "MoTa");
-
-        if (selectedFile != null)
-        {
-            var fileContent = new StreamContent(selectedFile.OpenReadStream(512000));
-            fileContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(selectedFile.ContentType);
-            content.Add(fileContent, "ImageFile", selectedFile.Name);
-        }
-
-        var response = await Http.PostAsync("/api/admin/san-pham", content);
+        var response = await sanPhamService.CreateSanPhamAsync(sanPham, imageFile!);
 
         if (response.IsSuccessStatusCode)
         {
-            Navigation.NavigateTo("/admin/san-pham");
+            nav.NavigateTo("/admin/san-pham");
         }
         else
         {
-            // Xử lý lỗi nếu cần
-            Console.WriteLine("Lỗi khi tạo sản phẩm");
+            // Có thể dùng toast hoặc hiển thị lỗi
+            Console.WriteLine("Thêm sản phẩm thất bại.");
         }
     }
 
-    public class DanhMuc
+    private void HandleImageUpload(InputFileChangeEventArgs e)
     {
-        public int MaDanhMuc { get; set; }
-        public string TenDanhMuc { get; set; } = string.Empty;
-    }
-
-    public class SanPham
-    {
-        public int MaSanPham { get; set; }
-        public string? TenSanPham { get; set; }
-        public decimal Gia { get; set; }
-        public int SoLuong { get; set; }
-        public int MaDanhMuc { get; set; }
-        public string? MoTa { get; set; }
+        imageFile = e.File;
     }
 }

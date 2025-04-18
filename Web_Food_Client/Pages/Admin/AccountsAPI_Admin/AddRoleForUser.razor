@@ -1,0 +1,81 @@
+﻿@page "/admin/accounts/them-vai-tro/{UserId}"
+@layout AdminLayout
+@inject AccountService accountService
+@inject NavigationManager navigationManager
+
+<h3>Thêm vai trò cho tài khoản</h3>
+
+@if (availableRoles == null)
+{
+    <p>Đang tải vai trò...</p>
+}
+else if (availableRoles.Count == 0)
+{
+    <p>Người dùng đã có tất cả các vai trò!</p>
+}
+else
+{
+    <EditForm Model="model" OnValidSubmit="AddRolesToUser">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="form-group">
+            <label>Chọn vai trò để thêm:</label>
+            @foreach (var role in availableRoles)
+            {
+                <div>
+                    <input type="checkbox" value="@role" @onchange="e => OnRoleToggle(role, e.Value.ToString())" />
+                    <label>@role</label>
+                </div>
+            }
+        </div>
+
+        <button type="submit" class="btn btn-primary">Thêm Vai Trò</button>
+        @* <button type="button" class="btn btn-secondary" @onclick="() => navigationManager.NavigateTo("/admin/tai-khoan")">Quay lại</button> *@
+    </EditForm>
+}
+
+@code {
+    [Parameter] public string UserId { get; set; }
+
+    private RoleViewModel model = new RoleViewModel { RoleNames = new List<string>() };
+    private List<string> availableRoles;
+
+    protected override async Task OnInitializedAsync()
+    {
+        availableRoles = await accountService.GetAvailabelRolesAsync(UserId);
+    }
+
+    private void OnRoleToggle(string role, string isChecked)
+    {
+        if (isChecked == "true")
+        {
+            model.RoleNames.Add(role);
+        }
+        else
+        {
+            model.RoleNames.Remove(role);
+        }
+    }
+
+    private async Task AddRolesToUser()
+    {
+        if (model.RoleNames.Count == 0)
+        {
+            // Có thể hiển thị thông báo nếu muốn
+            return;
+        }
+
+        var response = await accountService.AddRolesAsync(UserId, model);
+
+        if (response.IsSuccessStatusCode)
+        {
+            navigationManager.NavigateTo("/admin/tai-khoan");
+        }
+        else
+        {
+            var error = await response.Content.ReadFromJsonAsync<Dictionary<string, string>>();
+            Console.WriteLine("Lỗi: " + error["Error"]);
+        }
+    }
+}

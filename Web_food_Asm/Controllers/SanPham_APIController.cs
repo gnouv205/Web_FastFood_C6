@@ -96,7 +96,7 @@ namespace Web_food_Asm.Controllers
 					SoLuong = sanPhamDto.SoLuong,
 					MaDanhMuc = sanPhamDto.MaDanhMuc,
 					MoTa = sanPhamDto.MoTa,
-					HinhAnh = ImageFile != null ? await SaveUserImage(ImageFile) : "/images/default.png",
+					HinhAnh = ImageFile != null ? await SaveUserImage(ImageFile) : "/images/garan/garan1.jpg",
 					NgayTao = DateTime.Now,
 					NgayCapNhat = DateTime.Now
 				};
@@ -189,19 +189,20 @@ namespace Web_food_Asm.Controllers
         /// <summary>
         /// Lưu hình ảnh sản phẩm vào thư mục.
         /// </summary>
-        private async Task<string> SaveUserImage(IFormFile imageFile)
+        private async Task<string> SaveUserImage(IFormFile file)
         {
-            var directoryPath = Path.Combine(_webHostEnvironment.WebRootPath, "images", "newfood");
-            if (!Directory.Exists(directoryPath))
-                Directory.CreateDirectory(directoryPath);
+            var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/newfood");
+            if (!Directory.Exists(uploadsFolder))
+                Directory.CreateDirectory(uploadsFolder);
 
-            var uniqueFileName = Guid.NewGuid().ToString() + Path.GetExtension(imageFile.FileName);
-            var imagePath = Path.Combine(directoryPath, uniqueFileName);
+            var fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+            var filePath = Path.Combine(uploadsFolder, fileName);
 
-            using (var stream = new FileStream(imagePath, FileMode.Create))
-                await imageFile.CopyToAsync(stream);
-
-            return "/images/newfood/" + uniqueFileName;
+            using (var fileStream = new FileStream(filePath, FileMode.Create))
+            {
+                await file.CopyToAsync(fileStream);
+            }
+            return "/images/newfood" + fileName;
         }
         #endregion
     }

@@ -1,31 +1,58 @@
-
-
-window.triggerFileInput = (element) => {
+﻿// Function để trigger click trên input file
+window.triggerFileInput = function (element) {
     element.click();
 };
 
-/*price range*/
-
- $('#sl2').slider();
-
-	var RGBChange = function() {
-	  $('#RGB').css('background', 'rgb('+r.getValue()+','+g.getValue()+','+b.getValue()+')')
-	};	
-		
-/*scroll to top*/
-
-$(document).ready(function(){
-    $(function () {
-        $.scrollUp({
-            scrollName: 'scrollUp', // Element ID
-            scrollDistance: 300, // Distance from top/bottom before showing element (px)
-            scrollFrom: 'top', // 'top' or 'bottom'
-            scrollSpeed: 300, // Speed back to top (ms)
-            easingType: 'linear',
-            animation: 'fade', // 'fade', 'slide', 'none'
-            animationSpeed: 200, // Animation speed (ms)
-            scrollText: '<i class="fa fa-angle-up"></i>', // Text or HTML for the 'back to top' element
-            zIndex: 2147483647 // Z-Index for the overlay
+// Function khởi tạo slider (sử dụng thư viện noUiSlider)
+window.initSlider = function () {
+    const slider = document.getElementById('sl2');
+    if (slider) {
+        noUiSlider.create(slider, {
+            start: [20, 80],
+            connect: true,
+            range: {
+                'min': 0,
+                'max': 100
+            }
         });
+    }
+};
+
+// Function thay đổi màu RGB
+window.RGBChange = function (r, g, b) {
+    const rgbElement = document.getElementById('RGB');
+    if (rgbElement) {
+        rgbElement.style.background = `rgb(${r},${g},${b})`;
+    }
+};
+
+// Function scroll to top
+window.scrollToTop = function () {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
     });
+};
+
+// Tự động hiển thị nút scroll-to-top khi cuộn
+window.toggleScrollButton = function () {
+    const scrollButton = document.querySelector('.scroll-to-top');
+    if (scrollButton) {
+        if (window.pageYOffset > 300) {
+            scrollButton.classList.add('visible');
+        } else {
+            scrollButton.classList.remove('visible');
+        }
+    }
+};
+
+// Thêm event listener khi trang load xong
+document.addEventListener('DOMContentLoaded', function () {
+    // Khởi tạo slider
+    if (typeof noUiSlider !== 'undefined') {
+        initSlider();
+    }
+
+    // Thêm sự kiện scroll
+    window.addEventListener('scroll', toggleScrollButton);
 });
